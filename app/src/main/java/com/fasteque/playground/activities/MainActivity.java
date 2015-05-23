@@ -1,9 +1,11 @@
-package com.fasteque.playground;
+package com.fasteque.playground.activities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.fasteque.playground.R;
 
 
 public class MainActivity extends AppCompatActivity {
