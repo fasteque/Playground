@@ -1,4 +1,4 @@
-package com.fasteque.playground.activities;
+package com.fasteque.playground.views.activities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
