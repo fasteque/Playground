@@ -7,6 +7,14 @@
         <item name="colorAccent">@color/accent</item>
     </style>
 
+    <style name="AppTheme.Base.ActionBar" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/primary_dark</item>
+        <item name="colorAccent">@color/accent</item>
+    </style>
+
     <style name="AppTheme" parent="AppTheme.Base" />
+
+    <style name="AppTheme.ActionBar" parent="AppTheme.Base.ActionBar" />
 
 </resources>

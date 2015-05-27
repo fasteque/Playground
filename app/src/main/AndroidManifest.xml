@@ -17,6 +17,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".views.activities.AttributionsActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme.ActionBar"
+            android:label="@string/title_attributions" />
     </application>
 
 </manifest>
