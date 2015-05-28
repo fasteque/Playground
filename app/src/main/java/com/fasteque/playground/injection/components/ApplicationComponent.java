@@ -2,6 +2,7 @@ package com.fasteque.playground.injection.components;
 
 import com.fasteque.playground.PlaygroundApplication;
 import com.fasteque.playground.injection.modules.ApplicationModule;
+import com.fasteque.playground.model.MovieDbService;
 
 import javax.inject.Singleton;
 
@@ -28,4 +29,5 @@ public interface ApplicationComponent {
      * they do not expose types from their modules unless you explicitly make them available.
      */
     PlaygroundApplication application();
+    MovieDbService dataService();
 }

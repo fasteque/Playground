@@ -4,6 +4,8 @@ import com.fasteque.playground.model.MovieDbService;
 import com.fasteque.playground.model.entities.TvShowDetail;
 import com.fasteque.playground.model.entities.TvShowsWrapper;
 
+import javax.inject.Inject;
+
 import retrofit.RequestInterceptor;
 import retrofit.RestAdapter;
 import rx.Observable;
@@ -15,6 +17,7 @@ import rx.Observable;
 public class RestMovieDbService implements MovieDbService {
     private final MovieDbApi movieDbApi;
 
+    @Inject
     public RestMovieDbService() {
         RestAdapter restAdapter = new RestAdapter.Builder()
                 .setEndpoint(MovieDbApi.END_POINT)

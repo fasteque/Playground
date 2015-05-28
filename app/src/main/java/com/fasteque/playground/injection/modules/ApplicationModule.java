@@ -1,6 +1,8 @@
 package com.fasteque.playground.injection.modules;
 
 import com.fasteque.playground.PlaygroundApplication;
+import com.fasteque.playground.model.MovieDbService;
+import com.fasteque.playground.model.rest.RestMovieDbService;
 
 import javax.inject.Singleton;
 
@@ -30,4 +32,8 @@ public class ApplicationModule {
     PlaygroundApplication provideApplicationContext() {
         return playgroundApplication;
     }
+
+    @Provides
+    @Singleton
+    MovieDbService provideDataService(RestMovieDbService restMovieDbService) { return  restMovieDbService; }
 }
