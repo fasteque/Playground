@@ -39,11 +39,11 @@ public class RestMovieDbService implements MovieDbService {
 
     @Override
     public Observable<TvShowsWrapper> getTvShowsAiringToday(int page) {
-        return null;
+        return movieDbApi.getTvShowsAiringToday(page);
     }
 
     @Override
     public Observable<TvShowDetail> getTvShowDetail(String id) {
-        return null;
+        return movieDbApi.getTvShowDetail(id);
     }
 }
