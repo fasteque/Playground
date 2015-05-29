@@ -12,4 +12,5 @@
     <string name="pref_data_api">Data Source API</string>
     <string name="title_attributions">Attributions</string>
     <string name="action_attributions">Attributions</string>
+
 </resources>
