@@ -9,12 +9,16 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.fasteque.playground.R;
+import com.fasteque.playground.model.entities.TvShow;
+import com.fasteque.playground.views.TvShowsView;
+
+import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements TvShowsView {
     @InjectView(R.id.shows_toolbar)
     Toolbar toolbar;
 
@@ -27,7 +31,28 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         ButterKnife.inject(this);
+
+        initToolbar();
+        initRecyclerView();
+        initDependencyInjector();
+        initPresenter();
+    }
+
+    private void initToolbar() {
         setSupportActionBar(toolbar);
+        toolbar.setTitle(getString(R.string.title_airing_today));
+    }
+
+    private void initRecyclerView() {
+
+    }
+
+    private void initDependencyInjector() {
+
+    }
+
+    private void initPresenter() {
+
     }
 
     @Override
@@ -47,5 +72,10 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void showAiringToday(List<TvShow> tvShows) {
+
     }
 }

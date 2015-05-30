@@ -7,11 +7,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.fasteque.playground.R;
+import com.fasteque.playground.views.TvShowDetailView;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
-public class TvShowDetailActivity extends AppCompatActivity {
+public class TvShowDetailActivity extends AppCompatActivity implements TvShowDetailView {
 
     @InjectView(R.id.show_detail_toolbar)
     Toolbar toolbar;
