@@ -26,7 +26,12 @@ public class ApplicationModule {
         this.playgroundApplication = playgroundApplication;
     }
 
-    // Provider method: returned type is the type which you want to inject.
+    /**
+     * With the @Provides annotation we are saying to Dagger 2 how a dependency has to be build
+     * if required.
+     * Otherwise if we wouldn't indicate a provider for a particular dependency, Dagger 2 will go to
+     * find it to the constructor annotated with: @Inject.
+     */
     @Provides
     @Singleton
     PlaygroundApplication provideApplicationContext() {
