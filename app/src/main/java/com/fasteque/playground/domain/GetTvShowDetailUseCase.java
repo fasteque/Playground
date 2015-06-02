@@ -2,6 +2,8 @@ package com.fasteque.playground.domain;
 
 import com.fasteque.playground.model.MovieDbService;
 
+import javax.inject.Inject;
+
 import rx.Subscriber;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
@@ -14,10 +16,10 @@ import rx.schedulers.Schedulers;
 public class GetTvShowDetailUseCase implements UseCase {
 
     private final MovieDbService movieDbService;
-    private String tvShowId;
+    private Number tvShowId;
 
-    // FIXME: add injection.
-    public GetTvShowDetailUseCase(MovieDbService movieDbService, String tvShowId) {
+    @Inject
+    public GetTvShowDetailUseCase(MovieDbService movieDbService, Number tvShowId) {
         this.movieDbService = movieDbService;
         this.tvShowId = tvShowId;
     }

@@ -43,7 +43,7 @@ public class RestMovieDbService implements MovieDbService {
     }
 
     @Override
-    public Observable<TvShowDetail> getTvShowDetail(String id) {
+    public Observable<TvShowDetail> getTvShowDetail(Number id) {
         return movieDbApi.getTvShowDetail(id);
     }
 }

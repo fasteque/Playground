@@ -2,6 +2,8 @@ package com.fasteque.playground.domain;
 
 import com.fasteque.playground.model.MovieDbService;
 
+import javax.inject.Inject;
+
 import rx.Subscriber;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
@@ -16,7 +18,7 @@ public class GetAiringTodayUseCase implements UseCase {
     private final MovieDbService movieDbService;
     private int page;
 
-    // FIXME: add injection
+    @Inject
     public GetAiringTodayUseCase(MovieDbService movieDbService, int page) {
         this.movieDbService = movieDbService;
         this.page = page;

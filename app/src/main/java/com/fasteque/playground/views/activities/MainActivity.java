@@ -10,9 +10,12 @@ import android.view.MenuItem;
 
 import com.fasteque.playground.R;
 import com.fasteque.playground.model.entities.TvShow;
+import com.fasteque.playground.presenters.TvShowsPresenter;
 import com.fasteque.playground.views.TvShowsView;
 
 import java.util.List;
+
+import javax.inject.Inject;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -24,6 +27,9 @@ public class MainActivity extends AppCompatActivity implements TvShowsView {
 
     @InjectView(R.id.shows_recyclerView)
     RecyclerView showsRecycler;
+
+    @Inject
+    TvShowsPresenter tvShowsPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

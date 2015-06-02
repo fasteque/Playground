@@ -7,7 +7,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.fasteque.playground.R;
+import com.fasteque.playground.presenters.TvShowDetailPresenter;
 import com.fasteque.playground.views.TvShowDetailView;
+
+import javax.inject.Inject;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -16,6 +19,9 @@ public class TvShowDetailActivity extends AppCompatActivity implements TvShowDet
 
     @InjectView(R.id.show_detail_toolbar)
     Toolbar toolbar;
+
+    @Inject
+    TvShowDetailPresenter tvShowDetailPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

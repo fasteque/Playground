@@ -11,5 +11,5 @@ import rx.Observable;
  */
 public interface MovieDbService {
     Observable<TvShowsWrapper> getTvShowsAiringToday(final int page);
-    Observable<TvShowDetail> getTvShowDetail(final String id);
+    Observable<TvShowDetail> getTvShowDetail(final Number id);
 }

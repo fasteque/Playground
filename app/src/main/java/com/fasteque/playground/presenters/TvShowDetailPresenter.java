@@ -4,6 +4,8 @@ import com.fasteque.playground.domain.GetTvShowDetailUseCase;
 import com.fasteque.playground.views.TvShowDetailView;
 import com.fasteque.playground.views.View;
 
+import javax.inject.Inject;
+
 /**
  * Created by danielealtomare on 25/05/15.
  * Project: Playground
@@ -15,7 +17,7 @@ public class TvShowDetailPresenter implements Presenter {
     private final GetTvShowDetailUseCase getTvShowDetailUseCase;
     private String tvShowId;
 
-    // FIXME: add injection.
+    @Inject
     public TvShowDetailPresenter(GetTvShowDetailUseCase getTvShowDetailUseCase) {
         this.getTvShowDetailUseCase = getTvShowDetailUseCase;
     }

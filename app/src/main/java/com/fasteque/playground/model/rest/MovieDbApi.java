@@ -22,5 +22,5 @@ public interface MovieDbApi {
 
     @GET("tv/")
     Observable<TvShowDetail>
-    getTvShowDetail(@Path("id") String id);
+    getTvShowDetail(@Path("id") Number id);
 }

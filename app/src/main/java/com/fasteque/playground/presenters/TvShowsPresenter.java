@@ -4,6 +4,8 @@ import com.fasteque.playground.domain.GetAiringTodayUseCase;
 import com.fasteque.playground.views.TvShowsView;
 import com.fasteque.playground.views.View;
 
+import javax.inject.Inject;
+
 /**
  * Created by danielealtomare on 25/05/15.
  * Project: Playground
@@ -14,7 +16,7 @@ public class TvShowsPresenter implements Presenter {
     private TvShowsView tvShowsView;
     private final GetAiringTodayUseCase getAiringTodayUseCase;
 
-    //FIXME: add injection
+    @Inject
     public TvShowsPresenter(GetAiringTodayUseCase getAiringTodayUseCase) {
         this.getAiringTodayUseCase = getAiringTodayUseCase;
     }
