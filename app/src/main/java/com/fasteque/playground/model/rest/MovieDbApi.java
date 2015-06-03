@@ -13,14 +13,14 @@ import rx.Observable;
  * Project: Playground
  */
 public interface MovieDbApi {
-    String END_POINT = "https://api.themoviedb.org/3/";
+    String END_POINT = "https://api.themoviedb.org/3";
     String PARAM_API_KEY = "api_key";
 
-    @GET("tv/airing_today")
+    @GET("/tv/airing_today")
     Observable<TvShowsWrapper>
     getTvShowsAiringToday(@Query("page") int page);
 
-    @GET("tv/")
+    @GET("/tv/")
     Observable<TvShowDetail>
     getTvShowDetail(@Path("id") Number id);
 }
