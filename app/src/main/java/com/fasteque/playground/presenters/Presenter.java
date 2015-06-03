@@ -7,7 +7,7 @@ import com.fasteque.playground.views.View;
  * Project: Playground
  */
 public interface Presenter {
-    void onStart();
-    void onStop();
+    void onPresenterStart();
+    void onPresenterStop();
     void attachView(View view);
 }

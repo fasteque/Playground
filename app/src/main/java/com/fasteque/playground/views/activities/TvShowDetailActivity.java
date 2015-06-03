@@ -6,6 +6,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.fasteque.playground.PlaygroundApplication;
 import com.fasteque.playground.R;
 import com.fasteque.playground.presenters.TvShowDetailPresenter;
 import com.fasteque.playground.views.TvShowDetailView;
@@ -30,6 +31,38 @@ public class TvShowDetailActivity extends AppCompatActivity implements TvShowDet
 
         ButterKnife.inject(this);
         setSupportActionBar(toolbar);
+
+        initToolbar();
+        initDependencyInjector();
+        initPresenter();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        tvShowDetailPresenter.onPresenterStart();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        tvShowDetailPresenter.onPresenterStop();
+    }
+
+    private void initToolbar() {
+        setSupportActionBar(toolbar);
+        // TODO
+    }
+
+    private void initDependencyInjector() {
+        PlaygroundApplication playgroundApplication = (PlaygroundApplication) getApplication();
+
+        // TODO
+    }
+
+    private void initPresenter() {
+        tvShowDetailPresenter.attachView(this);
+        // TODO
     }
 
     @Override

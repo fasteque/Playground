@@ -27,7 +27,7 @@ public class GetAiringTodayUseCase implements UseCase {
     @Override
     public Subscription execute(Subscriber subscriber) {
         return movieDbService.getTvShowsAiringToday(page)
-                .subscribeOn(Schedulers.newThread())
+                .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(subscriber);
     }

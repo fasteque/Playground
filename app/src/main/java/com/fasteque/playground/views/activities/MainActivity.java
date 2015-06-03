@@ -8,7 +8,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.fasteque.playground.PlaygroundApplication;
 import com.fasteque.playground.R;
+import com.fasteque.playground.injection.components.DaggerTvShowAiringTodayComponent;
+import com.fasteque.playground.injection.modules.ActivityModule;
+import com.fasteque.playground.injection.modules.TvShowAiringTodayModule;
 import com.fasteque.playground.model.entities.TvShow;
 import com.fasteque.playground.presenters.TvShowsPresenter;
 import com.fasteque.playground.views.TvShowsView;
@@ -44,21 +48,39 @@ public class MainActivity extends AppCompatActivity implements TvShowsView {
         initPresenter();
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        tvShowsPresenter.onPresenterStart();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        tvShowsPresenter.onPresenterStop();
+    }
+
     private void initToolbar() {
         setSupportActionBar(toolbar);
         toolbar.setTitle(getString(R.string.title_airing_today));
     }
 
     private void initRecyclerView() {
-
+        // TODO
     }
 
     private void initDependencyInjector() {
+        PlaygroundApplication playgroundApplication = (PlaygroundApplication) getApplication();
 
+        DaggerTvShowAiringTodayComponent.builder()
+                .tvShowAiringTodayModule(new TvShowAiringTodayModule(1))
+                .activityModule(new ActivityModule(this))
+                .applicationComponent(playgroundApplication.getApplicationComponent())
+                .build().inject(this);
     }
 
     private void initPresenter() {
-
+        tvShowsPresenter.attachView(this);
     }
 
     @Override

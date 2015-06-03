@@ -27,7 +27,7 @@ public class GetTvShowDetailUseCase implements UseCase {
     @Override
     public Subscription execute(Subscriber subscriber) {
         return movieDbService.getTvShowDetail(tvShowId)
-                .subscribeOn(Schedulers.newThread())
+                .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(subscriber);
     }
