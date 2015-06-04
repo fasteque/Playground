@@ -53,5 +53,6 @@ public class TvShowsPresenter extends Subscriber<TvShowsWrapper> implements Pres
     @Override
     public void onNext(TvShowsWrapper tvShowsWrapper) {
         Log.d(getClass().getName(), "onNext");
+        tvShowsView.showAiringToday(tvShowsWrapper.getResults());
     }
 }
