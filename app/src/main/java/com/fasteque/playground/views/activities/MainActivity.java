@@ -16,6 +16,7 @@ import com.fasteque.playground.injection.modules.TvShowAiringTodayModule;
 import com.fasteque.playground.model.entities.TvShow;
 import com.fasteque.playground.presenters.TvShowsPresenter;
 import com.fasteque.playground.views.TvShowsView;
+import com.fasteque.playground.views.adapters.TvShowsAdapter;
 
 import java.util.List;
 
@@ -34,6 +35,8 @@ public class MainActivity extends AppCompatActivity implements TvShowsView {
 
     @Inject
     TvShowsPresenter tvShowsPresenter;
+
+    private TvShowsAdapter tvShowsAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +69,8 @@ public class MainActivity extends AppCompatActivity implements TvShowsView {
     }
 
     private void initRecyclerView() {
-        // TODO
+        tvShowsAdapter = new TvShowsAdapter();
+        showsRecycler.setAdapter(tvShowsAdapter);
     }
 
     private void initDependencyInjector() {
@@ -104,6 +108,6 @@ public class MainActivity extends AppCompatActivity implements TvShowsView {
 
     @Override
     public void showAiringToday(List<TvShow> tvShows) {
-
+        tvShowsAdapter.insertTvShows(tvShows);
     }
 }

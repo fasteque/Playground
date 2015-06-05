@@ -8,10 +8,11 @@
         android:id="@+id/shows_toolbar"
         layout="@layout/toolbar" />
 
-    <android.support.v7.widget.RecyclerView
+    <com.fasteque.playground.views.widgets.AutofitRecyclerView
         android:id="@+id/shows_recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:columnWidth="@dimen/item_tv_show_width"
         android:layout_below="@id/shows_toolbar"/>
 
 </RelativeLayout>
