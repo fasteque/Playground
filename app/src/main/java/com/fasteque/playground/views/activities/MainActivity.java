@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity implements TvShowsView {
     }
 
     private void initRecyclerView() {
-        tvShowsAdapter = new TvShowsAdapter();
+        tvShowsAdapter = new TvShowsAdapter(this);
         showsRecycler.setAdapter(tvShowsAdapter);
     }
 
