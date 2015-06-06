@@ -1,5 +1,6 @@
 package com.fasteque.playground.model;
 
+import com.fasteque.playground.model.entities.Configuration;
 import com.fasteque.playground.model.entities.TvShowDetail;
 import com.fasteque.playground.model.entities.TvShowsWrapper;
 
@@ -10,6 +11,7 @@ import rx.Observable;
  * Project: Playground
  */
 public interface MovieDbService {
+    Observable<Configuration> getConfiguration();
     Observable<TvShowsWrapper> getTvShowsAiringToday(final int page);
     Observable<TvShowDetail> getTvShowDetail(final Number id);
 }

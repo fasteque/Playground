@@ -1,6 +1,7 @@
 package com.fasteque.playground.model.rest;
 
 import com.fasteque.playground.model.MovieDbService;
+import com.fasteque.playground.model.entities.Configuration;
 import com.fasteque.playground.model.entities.TvShowDetail;
 import com.fasteque.playground.model.entities.TvShowsWrapper;
 
@@ -36,6 +37,11 @@ public class RestMovieDbService implements MovieDbService {
             request.addQueryParam(MovieDbApi.PARAM_API_KEY, "a46a3d7b1f4afc0fbbb66ee9d7775d1b");
         }
     };
+
+    @Override
+    public Observable<Configuration> getConfiguration() {
+        return movieDbApi.getConfiguration();
+    }
 
     @Override
     public Observable<TvShowsWrapper> getTvShowsAiringToday(int page) {

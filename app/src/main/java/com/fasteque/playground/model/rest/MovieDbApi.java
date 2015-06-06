@@ -1,5 +1,6 @@
 package com.fasteque.playground.model.rest;
 
+import com.fasteque.playground.model.entities.Configuration;
 import com.fasteque.playground.model.entities.TvShowDetail;
 import com.fasteque.playground.model.entities.TvShowsWrapper;
 
@@ -15,6 +16,10 @@ import rx.Observable;
 public interface MovieDbApi {
     String END_POINT = "https://api.themoviedb.org/3";
     String PARAM_API_KEY = "api_key";
+
+    @GET("/configuration")
+    Observable<Configuration>
+    getConfiguration();
 
     @GET("/tv/airing_today")
     Observable<TvShowsWrapper>
