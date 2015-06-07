@@ -1,6 +1,7 @@
 package com.fasteque.playground.injection.components;
 
 import com.fasteque.playground.domain.GetAiringTodayUseCase;
+import com.fasteque.playground.domain.GetConfigurationUseCase;
 import com.fasteque.playground.injection.PerActivity;
 import com.fasteque.playground.injection.modules.ActivityModule;
 import com.fasteque.playground.injection.modules.TvShowAiringTodayModule;
@@ -19,5 +20,6 @@ public interface TvShowAiringTodayComponent {
 
     void inject(MainActivity mainActivity);
 
+    GetConfigurationUseCase getConfigurationUseCase();
     GetAiringTodayUseCase getAiringTodayUseCase();
 }

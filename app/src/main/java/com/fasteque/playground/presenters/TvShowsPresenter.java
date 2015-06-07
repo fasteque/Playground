@@ -3,6 +3,7 @@ package com.fasteque.playground.presenters;
 import android.util.Log;
 
 import com.fasteque.playground.domain.GetAiringTodayUseCase;
+import com.fasteque.playground.domain.GetConfigurationUseCase;
 import com.fasteque.playground.model.entities.TvShowsWrapper;
 import com.fasteque.playground.views.TvShowsView;
 import com.fasteque.playground.views.View;
@@ -18,10 +19,13 @@ import rx.Subscriber;
 public class TvShowsPresenter extends Subscriber<TvShowsWrapper> implements Presenter {
 
     private TvShowsView tvShowsView;
+    private final GetConfigurationUseCase getConfigurationUseCase;
     private final GetAiringTodayUseCase getAiringTodayUseCase;
 
     @Inject
-    public TvShowsPresenter(GetAiringTodayUseCase getAiringTodayUseCase) {
+    public TvShowsPresenter(GetConfigurationUseCase getConfigurationUseCase,
+                            GetAiringTodayUseCase getAiringTodayUseCase) {
+        this.getConfigurationUseCase = getConfigurationUseCase;
         this.getAiringTodayUseCase = getAiringTodayUseCase;
     }
 
