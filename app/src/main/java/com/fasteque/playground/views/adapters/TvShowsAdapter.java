@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.fasteque.playground.R;
 import com.fasteque.playground.model.entities.TvShow;
+import com.fasteque.playground.utils.MovieDbConstants;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -75,14 +76,14 @@ public class TvShowsAdapter extends RecyclerView.Adapter<TvShowsAdapter.TvShowVi
         public TvShowViewHolder(View itemView) {
             super(itemView);
             ButterKnife.inject(this, itemView);
-            tvShowCover.setDrawingCacheEnabled(true);
         }
 
         public void bindTvShow(TvShow tvShow) {
             tvShowTitle.setText(tvShow.getName());
-            // TODO: set cover image
             Picasso.with(context)
-                    .load("")
+                    .load(MovieDbConstants.getBasicStaticUrl()
+                            + MovieDbConstants.getPosterPreferredSize()
+                            + tvShow.getPoster_path())
                     .fit().centerCrop()
                     .into(tvShowCover);
         }
