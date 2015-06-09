@@ -14,6 +14,10 @@
             <intent android:action="android.intent.action.VIEW"
                 android:data="https://github.com/square/leakcanary" />
         </Preference>
+        <Preference android:title="@string/prefs_picasso" >
+            <intent android:action="android.intent.action.VIEW"
+                android:data="http://square.github.io/picasso/" />
+        </Preference>
         <Preference android:title="@string/prefs_retrofit" >
             <intent android:action="android.intent.action.VIEW"
                 android:data="http://square.github.io/retrofit/" />

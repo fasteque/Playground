@@ -14,5 +14,6 @@
     <string name="action_attributions">Attributions</string>
 
     <string name="title_airing_today">Airing today</string>
+    <string name="prefs_picasso">Picasso</string>
 
 </resources>
