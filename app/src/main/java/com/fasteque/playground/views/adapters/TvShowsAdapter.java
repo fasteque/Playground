@@ -18,6 +18,11 @@ import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import rx.Observable;
+import rx.android.view.OnClickEvent;
+import rx.android.view.ViewObservable;
+import rx.functions.Func1;
+import rx.subjects.PublishSubject;
 
 /**
  * Created by danielealtomare on 05/06/15.
@@ -25,6 +30,7 @@ import butterknife.InjectView;
  */
 public class TvShowsAdapter extends RecyclerView.Adapter<TvShowsAdapter.TvShowViewHolder> {
 
+    private PublishSubject<View> tvShowView = PublishSubject.create();
     private List<TvShow> tvShows = new ArrayList<>();
     private Context context;
 
@@ -40,7 +46,15 @@ public class TvShowsAdapter extends RecyclerView.Adapter<TvShowsAdapter.TvShowVi
 
         TvShowViewHolder tvShowViewHolder = new TvShowViewHolder(view);
 
-        // TODO: RxAndroid bindview to manage item clicks.
+        // Unsubscribe is automatically performed by bindView method.
+        ViewObservable.bindView(parent, ViewObservable.clicks(view))
+                .map(new Func1<OnClickEvent, View>() {
+                    @Override
+                    public View call(OnClickEvent onClickEvent) {
+                        return onClickEvent.view();
+                    }
+                })
+                .subscribe(tvShowView);
 
         return tvShowViewHolder;
     }
@@ -64,6 +78,18 @@ public class TvShowsAdapter extends RecyclerView.Adapter<TvShowsAdapter.TvShowVi
     public void insertTvShows(List<TvShow> tvShows) {
         this.tvShows.clear();
         appendTvShows(tvShows);
+    }
+
+    public Observable<View> onClickTvShow() {
+        return tvShowView;
+    }
+
+    public TvShow getTvShowAtPosition(int position) {
+        if(tvShows.size() > 0 && position < tvShows.size()) {
+            return tvShows.get(position);
+        } else {
+            return null;
+        }
     }
 
     class TvShowViewHolder extends RecyclerView.ViewHolder {

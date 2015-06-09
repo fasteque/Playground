@@ -67,7 +67,6 @@ public class TvShowDetailActivity extends AppCompatActivity implements TvShowDet
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_tv_show_detail, menu);
         return true;
     }

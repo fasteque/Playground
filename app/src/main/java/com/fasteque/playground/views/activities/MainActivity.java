@@ -5,8 +5,10 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.fasteque.playground.PlaygroundApplication;
 import com.fasteque.playground.R;
@@ -24,6 +26,9 @@ import javax.inject.Inject;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import rx.android.view.ViewObservable;
+import rx.functions.Action1;
+import rx.functions.Func1;
 
 
 public class MainActivity extends AppCompatActivity implements TvShowsView {
@@ -71,6 +76,22 @@ public class MainActivity extends AppCompatActivity implements TvShowsView {
     private void initRecyclerView() {
         tvShowsAdapter = new TvShowsAdapter(this);
         showsRecycler.setAdapter(tvShowsAdapter);
+
+        // Unsubscribe is automatically performed by bindView method.
+        ViewObservable.bindView(showsRecycler, tvShowsAdapter.onClickTvShow())
+                .map(new Func1<View, TvShow>() {
+                    @Override
+                    public TvShow call(View view) {
+                        return tvShowsAdapter.getTvShowAtPosition(showsRecycler.getChildLayoutPosition(view));
+                    }
+                })
+                .subscribe(new Action1<TvShow>() {
+                    @Override
+                    public void call(TvShow tvShow) {
+                        // TODO
+                        Log.d(getClass().getName(), "clicked on show with id: " + tvShow.getId());
+                    }
+                });
     }
 
     private void initDependencyInjector() {
