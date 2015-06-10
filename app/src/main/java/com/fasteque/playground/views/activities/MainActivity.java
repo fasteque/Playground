@@ -88,8 +88,11 @@ public class MainActivity extends AppCompatActivity implements TvShowsView {
                 .subscribe(new Action1<TvShow>() {
                     @Override
                     public void call(TvShow tvShow) {
-                        // TODO
                         Log.d(getClass().getName(), "clicked on show with id: " + tvShow.getId());
+                        Intent tvShowDetailIntent = new Intent(MainActivity.this, TvShowDetailActivity.class);
+                        // TODO: set bundle data
+                        // TODO: animation
+                        startActivity(tvShowDetailIntent);
                     }
                 });
     }
