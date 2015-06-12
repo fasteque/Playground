@@ -32,6 +32,9 @@ import rx.functions.Func1;
 
 
 public class MainActivity extends AppCompatActivity implements TvShowsView {
+
+    public final static String EXTRA_TV_SHOW = "tv_show";
+
     @InjectView(R.id.shows_toolbar)
     Toolbar toolbar;
 
@@ -88,9 +91,8 @@ public class MainActivity extends AppCompatActivity implements TvShowsView {
                 .subscribe(new Action1<TvShow>() {
                     @Override
                     public void call(TvShow tvShow) {
-                        Log.d(getClass().getName(), "clicked on show with id: " + tvShow.getId());
                         Intent tvShowDetailIntent = new Intent(MainActivity.this, TvShowDetailActivity.class);
-                        // TODO: set bundle data
+                        tvShowDetailIntent.putExtra(EXTRA_TV_SHOW, tvShow);
                         // TODO: animation
                         startActivity(tvShowDetailIntent);
                     }

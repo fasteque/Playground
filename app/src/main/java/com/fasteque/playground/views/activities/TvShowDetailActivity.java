@@ -3,11 +3,13 @@ package com.fasteque.playground.views.activities;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.fasteque.playground.PlaygroundApplication;
 import com.fasteque.playground.R;
+import com.fasteque.playground.model.entities.TvShow;
 import com.fasteque.playground.presenters.TvShowDetailPresenter;
 import com.fasteque.playground.views.TvShowDetailView;
 
@@ -24,6 +26,8 @@ public class TvShowDetailActivity extends AppCompatActivity implements TvShowDet
     @Inject
     TvShowDetailPresenter tvShowDetailPresenter;
 
+    private TvShow tvShow;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +35,9 @@ public class TvShowDetailActivity extends AppCompatActivity implements TvShowDet
 
         ButterKnife.inject(this);
         setSupportActionBar(toolbar);
+
+        tvShow = getIntent().getParcelableExtra(MainActivity.EXTRA_TV_SHOW);
+        Log.d(getClass().getName(), tvShow.getId() + " " + tvShow.getName());
 
         initToolbar();
         initDependencyInjector();
@@ -62,7 +69,7 @@ public class TvShowDetailActivity extends AppCompatActivity implements TvShowDet
 
     private void initPresenter() {
         tvShowDetailPresenter.attachView(this);
-        // TODO
+        tvShowDetailPresenter.attachIncomingIntent(getIntent());
     }
 
     @Override
