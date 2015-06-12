@@ -1,17 +1,21 @@
 package com.fasteque.playground.model.entities;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by danielealtomare on 25/05/15.
  * Project: Playground
  */
-public class TvShow {
+public class TvShow implements Parcelable {
     private String backdrop_path;
     private String first_air_date;
     private Number id;
     private String name;
-    private List origin_country;
+    private List<String> origin_country;
     private String original_name;
     private Number popularity;
     private String poster_path;
@@ -50,11 +54,11 @@ public class TvShow {
         this.name = name;
     }
 
-    public List getOrigin_country() {
+    public List<String> getOrigin_country() {
         return origin_country;
     }
 
-    public void setOrigin_country(List origin_country) {
+    public void setOrigin_country(List<String> origin_country) {
         this.origin_country = origin_country;
     }
 
@@ -96,5 +100,49 @@ public class TvShow {
 
     public void setVote_count(Number vote_count) {
         this.vote_count = vote_count;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(backdrop_path);
+        dest.writeString(first_air_date);
+        dest.writeLong(id.longValue());
+        dest.writeString(name);
+        dest.writeStringList(origin_country);
+        dest.writeString(original_name);
+        dest.writeLong(popularity.longValue());
+        dest.writeString(poster_path);
+        dest.writeLong(vote_average.longValue());
+        dest.writeLong(vote_count.longValue());
+    }
+
+    public static final Parcelable.Creator<TvShow> CREATOR
+            = new Parcelable.Creator<TvShow>() {
+        public TvShow createFromParcel(Parcel in) {
+            return new TvShow(in);
+        }
+
+        public TvShow[] newArray(int size) {
+            return new TvShow[size];
+        }
+    };
+
+    private TvShow(Parcel in) {
+        backdrop_path = in.readString();
+        first_air_date = in.readString();
+        id = in.readLong();
+        name = in.readString();
+        origin_country = new ArrayList<String>();
+        in.readStringList(origin_country);
+        original_name = in.readString();
+        popularity = in.readLong();
+        poster_path = in.readString();
+        vote_average = in.readLong();
+        vote_count = in.readLong();
     }
 }
