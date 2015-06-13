@@ -25,7 +25,7 @@ public interface MovieDbApi {
     Observable<TvShowsWrapper>
     getTvShowsAiringToday(@Query("page") int page);
 
-    @GET("/tv/")
+    @GET("/tv/{id}")
     Observable<TvShowDetail>
     getTvShowDetail(@Path("id") Number id);
 }
