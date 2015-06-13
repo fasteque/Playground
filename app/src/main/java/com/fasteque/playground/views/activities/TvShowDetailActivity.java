@@ -9,6 +9,9 @@ import android.view.MenuItem;
 
 import com.fasteque.playground.PlaygroundApplication;
 import com.fasteque.playground.R;
+import com.fasteque.playground.injection.components.DaggerTvShowDetailComponent;
+import com.fasteque.playground.injection.modules.ActivityModule;
+import com.fasteque.playground.injection.modules.TvShowDetailModule;
 import com.fasteque.playground.model.entities.TvShow;
 import com.fasteque.playground.presenters.TvShowDetailPresenter;
 import com.fasteque.playground.views.TvShowDetailView;
@@ -58,13 +61,17 @@ public class TvShowDetailActivity extends AppCompatActivity implements TvShowDet
 
     private void initToolbar() {
         setSupportActionBar(toolbar);
-        // TODO
+        getSupportActionBar().setTitle(tvShow.getName());
     }
 
     private void initDependencyInjector() {
         PlaygroundApplication playgroundApplication = (PlaygroundApplication) getApplication();
 
-        // TODO
+        DaggerTvShowDetailComponent.builder()
+                .tvShowDetailModule(new TvShowDetailModule(tvShow.getId()))
+                .activityModule(new ActivityModule(this))
+                .applicationComponent(playgroundApplication.getApplicationComponent())
+                .build().inject(this);
     }
 
     private void initPresenter() {
