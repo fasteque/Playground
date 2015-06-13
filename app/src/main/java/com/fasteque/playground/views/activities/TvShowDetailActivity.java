@@ -13,6 +13,7 @@ import com.fasteque.playground.injection.components.DaggerTvShowDetailComponent;
 import com.fasteque.playground.injection.modules.ActivityModule;
 import com.fasteque.playground.injection.modules.TvShowDetailModule;
 import com.fasteque.playground.model.entities.TvShow;
+import com.fasteque.playground.model.entities.TvShowDetail;
 import com.fasteque.playground.presenters.TvShowDetailPresenter;
 import com.fasteque.playground.views.TvShowDetailView;
 
@@ -23,7 +24,7 @@ import butterknife.InjectView;
 
 public class TvShowDetailActivity extends AppCompatActivity implements TvShowDetailView {
 
-    @InjectView(R.id.show_detail_toolbar)
+    @InjectView(R.id.tv_show_detail_toolbar)
     Toolbar toolbar;
 
     @Inject
@@ -45,6 +46,7 @@ public class TvShowDetailActivity extends AppCompatActivity implements TvShowDet
         initToolbar();
         initDependencyInjector();
         initPresenter();
+        initCachedDetail();
     }
 
     @Override
@@ -79,6 +81,16 @@ public class TvShowDetailActivity extends AppCompatActivity implements TvShowDet
         tvShowDetailPresenter.attachIncomingIntent(getIntent());
     }
 
+    private void initCachedDetail() {
+        /**
+         * So far there's not a real cache but anyway the intent
+         * which has started this activity already have some information
+         * about the TV show to be displayed.
+         */
+
+        // TODO
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_tv_show_detail, menu);
@@ -98,5 +110,10 @@ public class TvShowDetailActivity extends AppCompatActivity implements TvShowDet
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void displayTvShowDetail(TvShowDetail tvShowDetail) {
+        // TODO
     }
 }
