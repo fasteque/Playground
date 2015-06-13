@@ -58,6 +58,6 @@ public class TvShowDetailPresenter extends Subscriber<TvShowDetail> implements P
 
     @Override
     public void onNext(TvShowDetail tvShowDetail) {
-
+        tvShowDetailView.displayTvShowDetail(tvShowDetail);
     }
 }
