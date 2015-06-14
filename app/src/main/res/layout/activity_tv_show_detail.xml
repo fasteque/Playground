@@ -14,40 +14,37 @@
 
 
         <ImageView
-            android:id="@+id/item_tv_show_cover"
+            android:id="@+id/tv_show_detail_cover"
             android:layout_width="match_parent"
             android:layout_height="@dimen/item_tv_show_height"
             android:scaleType="centerCrop" />
 
 
         <TextView
-            android:id="@+id/activity_detail_title"
+            android:id="@+id/tv_show_detail_title"
             android:layout_width="match_parent"
             android:layout_height="96dp"
-            android:layout_below="@id/item_tv_show_cover"
+            android:layout_below="@id/tv_show_detail_cover"
             android:background="@color/primary"
             android:elevation="4dp"
             android:ellipsize="end"
             android:gravity="center_vertical"
             android:maxLines="2"
-            android:paddingLeft="48dp"
-            android:paddingRight="48dp"
-            android:scaleY="0"
+            android:padding="@dimen/activity_horizontal_margin"
             android:textColor="#FFF"
-            android:textSize="28sp"
-            android:transformPivotY="0dp" />
+            android:textSize="20sp" />
 
         <LinearLayout
-            android:id="@+id/activity_detail_book_info"
+            android:id="@+id/tv_show_detail_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/activity_detail_title"
+            android:layout_below="@id/tv_show_detail_title"
             android:orientation="vertical"
-            android:padding="@dimen/activity_horizontal_margin">
+            android:padding="@dimen/activity_horizontal_margin" >
 
 
             <TextView
-                android:id="@+id/activity_detail_homepage"
+                android:id="@+id/tv_show_detail_detail_homepage"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:visibility="gone" />
