@@ -1,5 +1,7 @@
 package com.fasteque.playground.injection.components;
 
+import android.support.annotation.NonNull;
+
 import com.fasteque.playground.domain.GetAiringTodayUseCase;
 import com.fasteque.playground.domain.GetConfigurationUseCase;
 import com.fasteque.playground.injection.PerActivity;
@@ -18,7 +20,7 @@ import dagger.Component;
 @Component(dependencies = ApplicationComponent.class, modules = { TvShowAiringTodayModule.class, ActivityModule.class })
 public interface TvShowAiringTodayComponent {
 
-    void inject(MainActivity mainActivity);
+    void inject(@NonNull MainActivity mainActivity);
 
     GetConfigurationUseCase getConfigurationUseCase();
     GetAiringTodayUseCase getAiringTodayUseCase();

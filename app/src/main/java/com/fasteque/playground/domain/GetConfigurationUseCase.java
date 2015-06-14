@@ -1,5 +1,7 @@
 package com.fasteque.playground.domain;
 
+import android.support.annotation.NonNull;
+
 import com.fasteque.playground.model.MovieDbService;
 
 import javax.inject.Inject;
@@ -18,12 +20,12 @@ public class GetConfigurationUseCase implements UseCase {
     private final MovieDbService movieDbService;
 
     @Inject
-    public GetConfigurationUseCase(MovieDbService movieDbService) {
+    public GetConfigurationUseCase(@NonNull MovieDbService movieDbService) {
         this.movieDbService = movieDbService;
     }
 
     @Override
-    public Subscription execute(Subscriber subscriber) {
+    public Subscription execute(@NonNull Subscriber subscriber) {
         return movieDbService.getConfiguration()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

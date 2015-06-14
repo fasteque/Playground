@@ -1,5 +1,7 @@
 package com.fasteque.playground.injection.modules;
 
+import android.support.annotation.NonNull;
+
 import com.fasteque.playground.PlaygroundApplication;
 import com.fasteque.playground.model.MovieDbService;
 import com.fasteque.playground.model.rest.RestMovieDbService;
@@ -40,5 +42,5 @@ public class ApplicationModule {
 
     @Provides
     @Singleton
-    MovieDbService provideDataService(RestMovieDbService restMovieDbService) { return  restMovieDbService; }
+    MovieDbService provideDataService(@NonNull RestMovieDbService restMovieDbService) { return  restMovieDbService; }
 }

@@ -1,5 +1,7 @@
 package com.fasteque.playground.domain;
 
+import android.support.annotation.NonNull;
+
 import com.fasteque.playground.model.MovieDbService;
 
 import javax.inject.Inject;
@@ -19,13 +21,13 @@ public class GetAiringTodayUseCase implements UseCase {
     private int page;
 
     @Inject
-    public GetAiringTodayUseCase(MovieDbService movieDbService, int page) {
+    public GetAiringTodayUseCase(@NonNull MovieDbService movieDbService, int page) {
         this.movieDbService = movieDbService;
         this.page = page;
     }
 
     @Override
-    public Subscription execute(Subscriber subscriber) {
+    public Subscription execute(@NonNull Subscriber subscriber) {
         return movieDbService.getTvShowsAiringToday(page)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

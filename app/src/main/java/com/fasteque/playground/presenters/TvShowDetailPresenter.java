@@ -1,6 +1,7 @@
 package com.fasteque.playground.presenters;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 
 import com.fasteque.playground.domain.GetTvShowDetailUseCase;
 import com.fasteque.playground.model.entities.TvShowDetail;
@@ -37,12 +38,12 @@ public class TvShowDetailPresenter extends Subscriber<TvShowDetail> implements P
     }
 
     @Override
-    public void attachView(View view) {
+    public void attachView(@NonNull View view) {
         tvShowDetailView = (TvShowDetailView) view;
     }
 
     @Override
-    public void attachIncomingIntent(Intent intent) {
+    public void attachIncomingIntent(@NonNull Intent intent) {
         tvShowIntent = intent;
     }
 

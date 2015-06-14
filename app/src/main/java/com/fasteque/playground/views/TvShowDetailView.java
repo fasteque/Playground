@@ -1,5 +1,7 @@
 package com.fasteque.playground.views;
 
+import android.support.annotation.NonNull;
+
 import com.fasteque.playground.model.entities.TvShowDetail;
 
 /**
@@ -7,5 +9,5 @@ import com.fasteque.playground.model.entities.TvShowDetail;
  * Project: Playground
  */
 public interface TvShowDetailView extends View {
-    void displayTvShowDetail(TvShowDetail tvShowDetail);
+    void displayTvShowDetail(@NonNull TvShowDetail tvShowDetail);
 }

@@ -1,6 +1,7 @@
 package com.fasteque.playground.injection.modules;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 
 import com.fasteque.playground.injection.PerActivity;
 
@@ -17,7 +18,7 @@ public class ActivityModule {
 
     private final Context context;
 
-    public ActivityModule(Context context) {
+    public ActivityModule(@NonNull Context context) {
         this.context = context;
     }
 

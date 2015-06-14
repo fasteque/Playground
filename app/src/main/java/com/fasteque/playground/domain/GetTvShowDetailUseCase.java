@@ -1,5 +1,7 @@
 package com.fasteque.playground.domain;
 
+import android.support.annotation.NonNull;
+
 import com.fasteque.playground.model.MovieDbService;
 
 import javax.inject.Inject;
@@ -19,13 +21,13 @@ public class GetTvShowDetailUseCase implements UseCase {
     private Number tvShowId;
 
     @Inject
-    public GetTvShowDetailUseCase(MovieDbService movieDbService, Number tvShowId) {
+    public GetTvShowDetailUseCase(@NonNull MovieDbService movieDbService, Number tvShowId) {
         this.movieDbService = movieDbService;
         this.tvShowId = tvShowId;
     }
 
     @Override
-    public Subscription execute(Subscriber subscriber) {
+    public Subscription execute(@NonNull Subscriber subscriber) {
         return movieDbService.getTvShowDetail(tvShowId)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

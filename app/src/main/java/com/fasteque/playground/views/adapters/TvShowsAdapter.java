@@ -1,6 +1,7 @@
 package com.fasteque.playground.views.adapters;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,7 +35,7 @@ public class TvShowsAdapter extends RecyclerView.Adapter<TvShowsAdapter.TvShowVi
     private List<TvShow> tvShows = new ArrayList<>();
     private Context context;
 
-    public TvShowsAdapter(Context context) {
+    public TvShowsAdapter(@NonNull Context context) {
         this.context = context;
     }
 

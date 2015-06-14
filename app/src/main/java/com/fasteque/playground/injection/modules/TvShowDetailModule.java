@@ -1,5 +1,7 @@
 package com.fasteque.playground.injection.modules;
 
+import android.support.annotation.NonNull;
+
 import com.fasteque.playground.domain.GetTvShowDetailUseCase;
 import com.fasteque.playground.injection.PerActivity;
 import com.fasteque.playground.model.MovieDbService;
@@ -22,7 +24,7 @@ public class TvShowDetailModule {
     }
 
     @Provides @PerActivity
-    GetTvShowDetailUseCase provideGetTvShowDetailUseCase(MovieDbService movieDbService) {
+    GetTvShowDetailUseCase provideGetTvShowDetailUseCase(@NonNull MovieDbService movieDbService) {
         return new GetTvShowDetailUseCase(movieDbService, tvShowId);
     }
 }

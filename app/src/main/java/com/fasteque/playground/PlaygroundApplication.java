@@ -2,6 +2,7 @@ package com.fasteque.playground;
 
 import android.app.Application;
 import android.content.Context;
+import android.support.annotation.NonNull;
 
 import com.fasteque.playground.injection.components.ApplicationComponent;
 import com.fasteque.playground.injection.components.DaggerApplicationComponent;
@@ -30,7 +31,7 @@ public class PlaygroundApplication extends Application {
         return applicationComponent;
     }
 
-    public static RefWatcher getRefWatcher(Context context) {
+    public static RefWatcher getRefWatcher(@NonNull Context context) {
         PlaygroundApplication application = (PlaygroundApplication) context.getApplicationContext();
         return application.refWatcher;
     }

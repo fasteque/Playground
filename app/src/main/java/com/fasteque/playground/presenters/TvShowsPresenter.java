@@ -1,6 +1,7 @@
 package com.fasteque.playground.presenters;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.util.Log;
 
 import com.fasteque.playground.domain.GetAiringTodayUseCase;
@@ -43,12 +44,12 @@ public class TvShowsPresenter extends Subscriber<Configuration> implements Prese
     }
 
     @Override
-    public void attachView(View view) {
+    public void attachView(@NonNull View view) {
         tvShowsView = (TvShowsView) view;
     }
 
     @Override
-    public void attachIncomingIntent(Intent intent) {
+    public void attachIncomingIntent(@NonNull Intent intent) {
         // nothing to do by this presenter.
     }
 

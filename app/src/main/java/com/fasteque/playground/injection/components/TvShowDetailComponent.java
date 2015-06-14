@@ -1,5 +1,7 @@
 package com.fasteque.playground.injection.components;
 
+import android.support.annotation.NonNull;
+
 import com.fasteque.playground.domain.GetTvShowDetailUseCase;
 import com.fasteque.playground.injection.PerActivity;
 import com.fasteque.playground.injection.modules.ActivityModule;
@@ -17,7 +19,7 @@ import dagger.Component;
 @Component(dependencies = ApplicationComponent.class, modules = {TvShowDetailModule.class, ActivityModule.class })
 public interface TvShowDetailComponent {
 
-    void inject(TvShowDetailActivity tvShowDetailActivity);
+    void inject(@NonNull TvShowDetailActivity tvShowDetailActivity);
 
     GetTvShowDetailUseCase getTvShowDetailUseCase();
 }

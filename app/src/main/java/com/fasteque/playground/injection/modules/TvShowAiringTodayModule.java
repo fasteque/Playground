@@ -1,5 +1,7 @@
 package com.fasteque.playground.injection.modules;
 
+import android.support.annotation.NonNull;
+
 import com.fasteque.playground.domain.GetAiringTodayUseCase;
 import com.fasteque.playground.domain.GetConfigurationUseCase;
 import com.fasteque.playground.injection.PerActivity;
@@ -23,12 +25,12 @@ public class TvShowAiringTodayModule {
     }
 
     @Provides @PerActivity
-    GetConfigurationUseCase provideGetConfigurationUseCase(MovieDbService movieDbService) {
+    GetConfigurationUseCase provideGetConfigurationUseCase(@NonNull MovieDbService movieDbService) {
         return new GetConfigurationUseCase(movieDbService);
     }
 
     @Provides @PerActivity
-    GetAiringTodayUseCase provideGetAiringTodayUseCase(MovieDbService movieDbService) {
+    GetAiringTodayUseCase provideGetAiringTodayUseCase(@NonNull MovieDbService movieDbService) {
         return new GetAiringTodayUseCase(movieDbService, page);
     }
 }

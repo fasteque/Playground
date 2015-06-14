@@ -1,5 +1,7 @@
 package com.fasteque.playground.domain;
 
+import android.support.annotation.NonNull;
+
 import rx.Subscriber;
 import rx.Subscription;
 
@@ -8,5 +10,5 @@ import rx.Subscription;
  * Project: Playground
  */
 public interface UseCase {
-    Subscription execute(Subscriber subscriber);
+    Subscription execute(@NonNull Subscriber subscriber);
 }

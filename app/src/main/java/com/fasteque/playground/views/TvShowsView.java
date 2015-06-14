@@ -1,5 +1,7 @@
 package com.fasteque.playground.views;
 
+import android.support.annotation.NonNull;
+
 import com.fasteque.playground.model.entities.TvShow;
 
 import java.util.List;
@@ -9,5 +11,5 @@ import java.util.List;
  * Project: Playground
  */
 public interface TvShowsView extends View {
-    void showAiringToday(List<TvShow> tvShows);
+    void showAiringToday(@NonNull List<TvShow> tvShows);
 }
