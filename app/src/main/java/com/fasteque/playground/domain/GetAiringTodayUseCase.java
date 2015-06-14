@@ -1,5 +1,6 @@
 package com.fasteque.playground.domain;
 
+import android.support.annotation.IntRange;
 import android.support.annotation.NonNull;
 
 import com.fasteque.playground.model.MovieDbService;
@@ -21,7 +22,8 @@ public class GetAiringTodayUseCase implements UseCase {
     private int page;
 
     @Inject
-    public GetAiringTodayUseCase(@NonNull MovieDbService movieDbService, int page) {
+    public GetAiringTodayUseCase(@NonNull MovieDbService movieDbService,
+                                 @IntRange(from=0, to=1000) int page) {
         this.movieDbService = movieDbService;
         this.page = page;
     }

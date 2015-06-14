@@ -1,5 +1,7 @@
 package com.fasteque.playground.model.rest;
 
+import android.support.annotation.IntRange;
+
 import com.fasteque.playground.model.MovieDbService;
 import com.fasteque.playground.model.entities.Configuration;
 import com.fasteque.playground.model.entities.TvShowDetail;
@@ -44,7 +46,7 @@ public class RestMovieDbService implements MovieDbService {
     }
 
     @Override
-    public Observable<TvShowsWrapper> getTvShowsAiringToday(int page) {
+    public Observable<TvShowsWrapper> getTvShowsAiringToday(@IntRange(from=0, to=1000) int page) {
         return movieDbApi.getTvShowsAiringToday(page);
     }
 
