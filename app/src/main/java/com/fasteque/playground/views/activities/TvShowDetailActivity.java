@@ -6,6 +6,9 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.fasteque.playground.PlaygroundApplication;
 import com.fasteque.playground.R;
@@ -27,6 +30,15 @@ public class TvShowDetailActivity extends AppCompatActivity implements TvShowDet
     @InjectView(R.id.tv_show_detail_toolbar)
     Toolbar toolbar;
 
+    @InjectView(R.id.tv_show_detail_cover)
+    ImageView tvShowCover;
+
+    @InjectView(R.id.tv_show_detail_title)
+    TextView tvShowTitle;
+
+    @InjectView(R.id.tv_show_detail_detail_homepage)
+    TextView tvShowHomepage;
+
     @Inject
     TvShowDetailPresenter tvShowDetailPresenter;
 
@@ -41,7 +53,6 @@ public class TvShowDetailActivity extends AppCompatActivity implements TvShowDet
         setSupportActionBar(toolbar);
 
         tvShow = getIntent().getParcelableExtra(MainActivity.EXTRA_TV_SHOW);
-        Log.d(getClass().getName(), tvShow.getId() + " " + tvShow.getName());
 
         initToolbar();
         initDependencyInjector();
@@ -88,7 +99,7 @@ public class TvShowDetailActivity extends AppCompatActivity implements TvShowDet
          * about the TV show to be displayed.
          */
 
-        // TODO
+        tvShowTitle.setText(tvShow.getName());
     }
 
     @Override
@@ -114,6 +125,9 @@ public class TvShowDetailActivity extends AppCompatActivity implements TvShowDet
 
     @Override
     public void displayTvShowDetail(TvShowDetail tvShowDetail) {
-        // TODO
+        if(!"".equals(tvShowDetail.getHomepage())) {
+            tvShowHomepage.setVisibility(View.VISIBLE);
+            tvShowHomepage.setText(tvShowDetail.getHomepage());
+        }
     }
 }
