@@ -19,7 +19,9 @@ import com.fasteque.playground.injection.modules.TvShowDetailModule;
 import com.fasteque.playground.model.entities.TvShow;
 import com.fasteque.playground.model.entities.TvShowDetail;
 import com.fasteque.playground.presenters.TvShowDetailPresenter;
+import com.fasteque.playground.utils.MovieDbConstants;
 import com.fasteque.playground.views.TvShowDetailView;
+import com.squareup.picasso.Picasso;
 
 import javax.inject.Inject;
 
@@ -31,8 +33,8 @@ public class TvShowDetailActivity extends AppCompatActivity implements TvShowDet
     @InjectView(R.id.tv_show_detail_toolbar)
     Toolbar toolbar;
 
-    @InjectView(R.id.tv_show_detail_cover)
-    ImageView tvShowCover;
+    @InjectView(R.id.tv_show_detail_backdrop)
+    ImageView tvShowBackdrop;
 
     @InjectView(R.id.tv_show_detail_title)
     TextView tvShowTitle;
@@ -101,6 +103,12 @@ public class TvShowDetailActivity extends AppCompatActivity implements TvShowDet
          */
 
         tvShowTitle.setText(tvShow.getName());
+        Picasso.with(this)
+                .load(MovieDbConstants.getBasicStaticUrl()
+                        + MovieDbConstants.getBackdropPreferredSize()
+                        + tvShow.getBackdrop_path())
+                .fit().centerCrop()
+                .into(tvShowBackdrop);
     }
 
     @Override

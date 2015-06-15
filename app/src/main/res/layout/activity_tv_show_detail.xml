@@ -14,7 +14,7 @@
 
 
         <ImageView
-            android:id="@+id/tv_show_detail_cover"
+            android:id="@+id/tv_show_detail_backdrop"
             android:layout_width="match_parent"
             android:layout_height="@dimen/item_tv_show_height"
             android:scaleType="centerCrop" />
@@ -24,14 +24,14 @@
             android:id="@+id/tv_show_detail_title"
             android:layout_width="match_parent"
             android:layout_height="96dp"
-            android:layout_below="@id/tv_show_detail_cover"
+            android:layout_below="@id/tv_show_detail_backdrop"
             android:background="@color/primary"
             android:elevation="4dp"
             android:ellipsize="end"
             android:gravity="center_vertical"
             android:maxLines="2"
-            android:padding="@dimen/activity_horizontal_margin"
-            android:textColor="#FFF"
+            android:padding="@dimen/item_tv_show_title_padding"
+            android:textColor="@android:color/white"
             android:textSize="20sp" />
 
         <LinearLayout
@@ -46,7 +46,25 @@
             <TextView
                 android:id="@+id/tv_show_detail_detail_homepage"
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
+                android:layout_height="wrap_content"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tv_show_detail_detail_overview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tv_show_detail_detail_type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tv_show_detail_detail_status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:visibility="gone" />
 
         </LinearLayout>
