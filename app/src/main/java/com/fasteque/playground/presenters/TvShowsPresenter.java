@@ -67,7 +67,11 @@ public class TvShowsPresenter extends Subscriber<Configuration> implements Prese
     public void onNext(Configuration configuration) {
         Log.d(getClass().getName(), "onNext");
         MovieDbConstants.setBasicStaticUrl(configuration.getImages().getBase_url());
-        // TODO: improve the logic to pick the best poster size
+        // TODO: improve the logic to pick the best backdrop and poster sizes
+        // w500
+        MovieDbConstants.setBackdropPreferredSize(configuration.getImages().getBackdrop_sizes()
+                [configuration.getImages().getBackdrop_sizes().length - 2]);
+        // w500
         MovieDbConstants.setPosterPreferredSize(configuration.getImages().getPoster_sizes()
                 [configuration.getImages().getPoster_sizes().length - 3]);
 
