@@ -11,6 +11,7 @@ public final class MovieDbConstants {
     }
 
     private static String BASIC_STATIC_URL = "";
+    private static String BACKDROP_PREFERRED_SIZE = "";
     private static String POSTER_PREFERRED_SIZE = "";
 
     public static String getBasicStaticUrl() {
@@ -19,6 +20,14 @@ public final class MovieDbConstants {
 
     public static void setBasicStaticUrl(String basicStaticUrl) {
         BASIC_STATIC_URL = basicStaticUrl;
+    }
+
+    public static String getBackdropPreferredSize() {
+        return BACKDROP_PREFERRED_SIZE;
+    }
+
+    public static void setBackdropPreferredSize(String backdropPreferredSize) {
+        BACKDROP_PREFERRED_SIZE = backdropPreferredSize;
     }
 
     public static String getPosterPreferredSize() {
