@@ -23,12 +23,21 @@ import com.fasteque.playground.utils.MovieDbConstants;
 import com.fasteque.playground.views.TvShowDetailView;
 import com.squareup.picasso.Picasso;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import butterknife.InjectViews;
 
 public class TvShowDetailActivity extends AppCompatActivity implements TvShowDetailView {
+
+    private static final int TITLE = 0;
+    private static final int HOMEPAGE = 1;
+    private static final int OVERVIEW = 2;
+    private static final int TYPE = 3;
+    private static final int STATUS = 4;
 
     @InjectView(R.id.tv_show_detail_toolbar)
     Toolbar toolbar;
@@ -36,11 +45,14 @@ public class TvShowDetailActivity extends AppCompatActivity implements TvShowDet
     @InjectView(R.id.tv_show_detail_backdrop)
     ImageView tvShowBackdrop;
 
-    @InjectView(R.id.tv_show_detail_title)
-    TextView tvShowTitle;
-
-    @InjectView(R.id.tv_show_detail_detail_homepage)
-    TextView tvShowHomepage;
+    @InjectViews({
+            R.id.tv_show_detail_title,
+            R.id.tv_show_detail_detail_homepage,
+            R.id.tv_show_detail_detail_overview,
+            R.id.tv_show_detail_detail_type,
+            R.id.tv_show_detail_detail_status,
+    })
+    List<TextView> tvShowInfoTextViews;
 
     @Inject
     TvShowDetailPresenter tvShowDetailPresenter;
@@ -102,7 +114,7 @@ public class TvShowDetailActivity extends AppCompatActivity implements TvShowDet
          * about the TV show to be displayed.
          */
 
-        tvShowTitle.setText(tvShow.getName());
+        tvShowInfoTextViews.get(TITLE).setText(tvShow.getName());
         Picasso.with(this)
                 .load(MovieDbConstants.getBasicStaticUrl()
                         + MovieDbConstants.getBackdropPreferredSize()
@@ -135,8 +147,23 @@ public class TvShowDetailActivity extends AppCompatActivity implements TvShowDet
     @Override
     public void displayTvShowDetail(@NonNull TvShowDetail tvShowDetail) {
         if(!"".equals(tvShowDetail.getHomepage())) {
-            tvShowHomepage.setVisibility(View.VISIBLE);
-            tvShowHomepage.setText(tvShowDetail.getHomepage());
+            tvShowInfoTextViews.get(HOMEPAGE).setVisibility(View.VISIBLE);
+            tvShowInfoTextViews.get(HOMEPAGE).setText(tvShowDetail.getHomepage());
+        }
+
+        if(!"".equals(tvShowDetail.getOverview())) {
+            tvShowInfoTextViews.get(OVERVIEW).setVisibility(View.VISIBLE);
+            tvShowInfoTextViews.get(OVERVIEW).setText(tvShowDetail.getOverview());
+        }
+
+        if(!"".equals(tvShowDetail.getType())) {
+            tvShowInfoTextViews.get(TYPE).setVisibility(View.VISIBLE);
+            tvShowInfoTextViews.get(TYPE).setText(tvShowDetail.getType());
+        }
+
+        if(!"".equals(tvShowDetail.getStatus())) {
+            tvShowInfoTextViews.get(STATUS).setVisibility(View.VISIBLE);
+            tvShowInfoTextViews.get(STATUS).setText(tvShowDetail.getStatus());
         }
     }
 }
