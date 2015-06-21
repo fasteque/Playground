@@ -5,4 +5,5 @@
     <dimen name="item_tv_show_width">196dp</dimen>
     <dimen name="item_tv_show_height">248dp</dimen>
     <dimen name="item_tv_show_title_padding">12dp</dimen>
+    <dimen name="tv_show_detail_backdrop_height">256dp</dimen>
 </resources>
