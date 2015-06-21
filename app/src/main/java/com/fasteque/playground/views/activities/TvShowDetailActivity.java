@@ -1,6 +1,7 @@
 package com.fasteque.playground.views.activities;
 
 import android.support.annotation.NonNull;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -33,20 +34,21 @@ import butterknife.InjectViews;
 
 public class TvShowDetailActivity extends AppCompatActivity implements TvShowDetailView {
 
-    private static final int TITLE = 0;
-    private static final int HOMEPAGE = 1;
-    private static final int OVERVIEW = 2;
-    private static final int TYPE = 3;
-    private static final int STATUS = 4;
+    private static final int HOMEPAGE = 0;
+    private static final int OVERVIEW = 1;
+    private static final int TYPE = 2;
+    private static final int STATUS = 3;
 
     @InjectView(R.id.tv_show_detail_toolbar)
     Toolbar toolbar;
+
+    @InjectView(R.id.tv_show_detail_collapsing_toolbar)
+    CollapsingToolbarLayout collapsingToolbar;
 
     @InjectView(R.id.tv_show_detail_backdrop)
     ImageView tvShowBackdrop;
 
     @InjectViews({
-            R.id.tv_show_detail_title,
             R.id.tv_show_detail_detail_homepage,
             R.id.tv_show_detail_detail_overview,
             R.id.tv_show_detail_detail_type,
@@ -89,7 +91,7 @@ public class TvShowDetailActivity extends AppCompatActivity implements TvShowDet
 
     private void initToolbar() {
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle(tvShow.getName());
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     private void initDependencyInjector() {
@@ -113,8 +115,8 @@ public class TvShowDetailActivity extends AppCompatActivity implements TvShowDet
          * which has started this activity already have some information
          * about the TV show to be displayed.
          */
+        collapsingToolbar.setTitle(tvShow.getName());
 
-        tvShowInfoTextViews.get(TITLE).setText(tvShow.getName());
         Picasso.with(this)
                 .load(MovieDbConstants.getBasicStaticUrl()
                         + MovieDbConstants.getBackdropPreferredSize()
@@ -124,23 +126,12 @@ public class TvShowDetailActivity extends AppCompatActivity implements TvShowDet
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_tv_show_detail, menu);
-        return true;
-    }
-
-    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
