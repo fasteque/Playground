@@ -16,4 +16,7 @@
     <string name="title_airing_today">Airing today</string>
     <string name="prefs_picasso">Picasso</string>
 
+    <string name="error_tv_shows_airing_today">Failed to retrieve TV shows</string>
+    <string name="error_tv_show_detail">Failed to get TV show info</string>
+
 </resources>
