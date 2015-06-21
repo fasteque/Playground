@@ -2,6 +2,7 @@ package com.fasteque.playground.views.activities;
 
 import android.support.annotation.NonNull;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -156,5 +157,10 @@ public class TvShowDetailActivity extends AppCompatActivity implements TvShowDet
             tvShowInfoTextViews.get(STATUS).setVisibility(View.VISIBLE);
             tvShowInfoTextViews.get(STATUS).setText(tvShowDetail.getStatus());
         }
+    }
+
+    @Override
+    public void displayFeedback(String message) {
+        Snackbar.make(findViewById(android.R.id.content), message, Snackbar.LENGTH_SHORT).show();
     }
 }

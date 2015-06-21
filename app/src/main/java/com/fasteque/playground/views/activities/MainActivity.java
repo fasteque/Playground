@@ -3,6 +3,7 @@ package com.fasteque.playground.views.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -136,5 +137,10 @@ public class MainActivity extends AppCompatActivity implements TvShowsView {
     @Override
     public void showAiringToday(@NonNull List<TvShow> tvShows) {
         tvShowsAdapter.insertTvShows(tvShows);
+    }
+
+    @Override
+    public void displayFeedback(String message) {
+        Snackbar.make(findViewById(android.R.id.content), message, Snackbar.LENGTH_SHORT).show();
     }
 }
