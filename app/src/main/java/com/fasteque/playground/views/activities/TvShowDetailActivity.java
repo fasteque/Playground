@@ -160,7 +160,8 @@ public class TvShowDetailActivity extends AppCompatActivity implements TvShowDet
     }
 
     @Override
-    public void displayFeedback(String message) {
-        Snackbar.make(findViewById(android.R.id.content), message, Snackbar.LENGTH_SHORT).show();
+    public void displayError() {
+        Snackbar.make(findViewById(android.R.id.content),
+                getString(R.string.error_tv_show_detail), Snackbar.LENGTH_SHORT).show();
     }
 }

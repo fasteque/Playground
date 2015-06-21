@@ -140,7 +140,8 @@ public class MainActivity extends AppCompatActivity implements TvShowsView {
     }
 
     @Override
-    public void displayFeedback(String message) {
-        Snackbar.make(findViewById(android.R.id.content), message, Snackbar.LENGTH_SHORT).show();
+    public void displayError() {
+        Snackbar.make(findViewById(android.R.id.content),
+                getString(R.string.error_tv_shows_airing_today), Snackbar.LENGTH_SHORT).show();
     }
 }
