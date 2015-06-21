@@ -83,7 +83,7 @@ public class TvShowsPresenter extends Subscriber<Configuration> implements Prese
 
             @Override
             public void onError(Throwable e) {
-
+                tvShowsView.displayError();
             }
 
             @Override

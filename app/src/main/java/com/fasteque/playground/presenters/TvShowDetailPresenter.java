@@ -54,7 +54,7 @@ public class TvShowDetailPresenter extends Subscriber<TvShowDetail> implements P
 
     @Override
     public void onError(Throwable e) {
-
+        tvShowDetailView.displayError();
     }
 
     @Override
