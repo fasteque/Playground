@@ -5,4 +5,5 @@ package com.fasteque.playground.views;
  * Project: Playground
  */
 public interface View {
+    void displayFeedback(String message);
 }
