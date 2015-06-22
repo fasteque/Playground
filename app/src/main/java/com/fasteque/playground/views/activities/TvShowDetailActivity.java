@@ -49,6 +49,9 @@ public class TvShowDetailActivity extends AppCompatActivity implements TvShowDet
     @InjectView(R.id.tv_show_detail_backdrop)
     ImageView tvShowBackdrop;
 
+    @InjectView(R.id.tv_show_detail_cover)
+    ImageView tvShowCover;
+
     @InjectViews({
             R.id.tv_show_detail_detail_homepage,
             R.id.tv_show_detail_detail_overview,
@@ -124,6 +127,13 @@ public class TvShowDetailActivity extends AppCompatActivity implements TvShowDet
                         + tvShow.getBackdrop_path())
                 .fit().centerCrop()
                 .into(tvShowBackdrop);
+
+        Picasso.with(this)
+                .load(MovieDbConstants.getBasicStaticUrl()
+                        + MovieDbConstants.getPosterPreferredSize()
+                        + tvShow.getPoster_path())
+                .fit().centerCrop()
+                .into(tvShowCover);
     }
 
     @Override
