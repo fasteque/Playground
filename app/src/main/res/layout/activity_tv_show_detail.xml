@@ -51,6 +51,7 @@
             android:orientation="vertical">
 
             <LinearLayout
+                android:id="@+id/tv_show_detail_detail_homepage_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@android:color/white"

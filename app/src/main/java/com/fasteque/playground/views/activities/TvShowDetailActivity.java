@@ -1,5 +1,7 @@
 package com.fasteque.playground.views.activities;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.Snackbar;
@@ -11,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.fasteque.playground.PlaygroundApplication;
@@ -51,6 +54,9 @@ public class TvShowDetailActivity extends AppCompatActivity implements TvShowDet
 
     @InjectView(R.id.tv_show_detail_cover)
     ImageView tvShowCover;
+
+    @InjectView(R.id.tv_show_detail_detail_homepage_container)
+    LinearLayout tvShowHomepageContainer;
 
     @InjectViews({
             R.id.tv_show_detail_detail_homepage,
@@ -151,6 +157,17 @@ public class TvShowDetailActivity extends AppCompatActivity implements TvShowDet
         if(!"".equals(tvShowDetail.getHomepage())) {
             tvShowInfoTextViews.get(HOMEPAGE).setVisibility(View.VISIBLE);
             tvShowInfoTextViews.get(HOMEPAGE).setText(tvShowDetail.getHomepage());
+
+            tvShowHomepageContainer.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Uri url = Uri.parse(tvShowInfoTextViews.get(HOMEPAGE).getText().toString());
+                    Intent intent = new Intent(Intent.ACTION_VIEW, url);
+                    if (intent.resolveActivity(getPackageManager()) != null) {
+                        startActivity(intent);
+                    }
+                }
+            });
         }
 
         if(!"".equals(tvShowDetail.getOverview())) {
