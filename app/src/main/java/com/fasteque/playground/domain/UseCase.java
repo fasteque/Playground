@@ -1,14 +1,11 @@
 package com.fasteque.playground.domain;
 
-import android.support.annotation.NonNull;
-
-import rx.Subscriber;
-import rx.Subscription;
+import rx.Observable;
 
 /**
  * Created by danielealtomare on 31/05/15.
  * Project: Playground
  */
-public interface UseCase {
-    Subscription execute(@NonNull Subscriber subscriber);
+public interface UseCase<T> {
+    Observable<T> execute();
 }
