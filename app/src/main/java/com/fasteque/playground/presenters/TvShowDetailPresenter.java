@@ -11,6 +11,7 @@ import com.fasteque.playground.views.View;
 import javax.inject.Inject;
 
 import rx.Subscriber;
+import rx.Subscription;
 
 /**
  * Created by danielealtomare on 25/05/15.
@@ -23,6 +24,8 @@ public class TvShowDetailPresenter extends Subscriber<TvShowDetail> implements P
     private Intent tvShowIntent;
     private Number tvShowId;
 
+    private Subscription tvShowDetailSubscription;
+
     @Inject
     public TvShowDetailPresenter(GetTvShowDetailUseCase getTvShowDetailUseCase) {
         this.getTvShowDetailUseCase = getTvShowDetailUseCase;
@@ -30,11 +33,14 @@ public class TvShowDetailPresenter extends Subscriber<TvShowDetail> implements P
 
     @Override
     public void onPresenterStart() {
-        getTvShowDetailUseCase.execute(this);
+        tvShowDetailSubscription = getTvShowDetailUseCase.execute().subscribe(this);
     }
 
     @Override
     public void onPresenterStop() {
+        if(tvShowDetailSubscription.isUnsubscribed()) {
+            tvShowDetailSubscription.unsubscribe();
+        }
     }
 
     @Override

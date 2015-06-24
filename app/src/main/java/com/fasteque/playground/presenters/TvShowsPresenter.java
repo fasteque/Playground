@@ -15,16 +15,20 @@ import com.fasteque.playground.views.View;
 import javax.inject.Inject;
 
 import rx.Subscriber;
+import rx.Subscription;
 
 /**
  * Created by danielealtomare on 25/05/15.
  * Project: Playground
  */
-public class TvShowsPresenter extends Subscriber<Configuration> implements Presenter {
+public class TvShowsPresenter implements Presenter {
 
     private TvShowsView tvShowsView;
     private final GetConfigurationUseCase getConfigurationUseCase;
     private final GetAiringTodayUseCase getAiringTodayUseCase;
+
+    private Subscription configurationSubscription;
+    private Subscription airingTodaySubscription;
 
     @Inject
     public TvShowsPresenter(GetConfigurationUseCase getConfigurationUseCase,
@@ -35,12 +39,56 @@ public class TvShowsPresenter extends Subscriber<Configuration> implements Prese
 
     @Override
     public void onPresenterStart() {
-        getConfigurationUseCase.execute(this);
+        configurationSubscription = getConfigurationUseCase.execute().subscribe(new Subscriber<Configuration>() {
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onNext(Configuration configuration) {
+                Log.d(getClass().getName(), "onNext");
+                MovieDbConstants.setBasicStaticUrl(configuration.getImages().getBase_url());
+                // TODO: improve the logic to pick the best backdrop and poster sizes
+                // w500
+                MovieDbConstants.setBackdropPreferredSize(configuration.getImages().getBackdrop_sizes()
+                        [configuration.getImages().getBackdrop_sizes().length - 2]);
+                // w500
+                MovieDbConstants.setPosterPreferredSize(configuration.getImages().getPoster_sizes()
+                        [configuration.getImages().getPoster_sizes().length - 3]);
+
+                airingTodaySubscription = getAiringTodayUseCase.execute().subscribe(new Subscriber<TvShowsWrapper>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        tvShowsView.displayError();
+                    }
+
+                    @Override
+                    public void onNext(TvShowsWrapper tvShowsWrapper) {
+                        tvShowsView.showAiringToday(tvShowsWrapper.getResults());
+                    }
+                });
+            }
+        });
     }
 
     @Override
     public void onPresenterStop() {
-        // TODO
+        if (!configurationSubscription.isUnsubscribed())
+            configurationSubscription.unsubscribe();
+
+        if (!airingTodaySubscription.isUnsubscribed())
+            airingTodaySubscription.unsubscribe();
     }
 
     @Override
@@ -51,45 +99,5 @@ public class TvShowsPresenter extends Subscriber<Configuration> implements Prese
     @Override
     public void attachIncomingIntent(@NonNull Intent intent) {
         // nothing to do by this presenter.
-    }
-
-    @Override
-    public void onCompleted() {
-        Log.d(getClass().getName(), "onCompleted");
-    }
-
-    @Override
-    public void onError(Throwable e) {
-        Log.d(getClass().getName(), "onError: " + e.getMessage());
-    }
-
-    @Override
-    public void onNext(Configuration configuration) {
-        Log.d(getClass().getName(), "onNext");
-        MovieDbConstants.setBasicStaticUrl(configuration.getImages().getBase_url());
-        // TODO: improve the logic to pick the best backdrop and poster sizes
-        // w500
-        MovieDbConstants.setBackdropPreferredSize(configuration.getImages().getBackdrop_sizes()
-                [configuration.getImages().getBackdrop_sizes().length - 2]);
-        // w500
-        MovieDbConstants.setPosterPreferredSize(configuration.getImages().getPoster_sizes()
-                [configuration.getImages().getPoster_sizes().length - 3]);
-
-        getAiringTodayUseCase.execute(new Subscriber<TvShowsWrapper>() {
-            @Override
-            public void onCompleted() {
-
-            }
-
-            @Override
-            public void onError(Throwable e) {
-                tvShowsView.displayError();
-            }
-
-            @Override
-            public void onNext(TvShowsWrapper tvShowsWrapper) {
-                tvShowsView.showAiringToday(tvShowsWrapper.getResults());
-            }
-        });
     }
 }
