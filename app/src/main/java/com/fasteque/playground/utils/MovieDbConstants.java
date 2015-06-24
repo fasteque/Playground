@@ -13,6 +13,7 @@ public final class MovieDbConstants {
     private static String BASIC_STATIC_URL = "";
     private static String BACKDROP_PREFERRED_SIZE = "";
     private static String POSTER_PREFERRED_SIZE = "";
+    private static final int MAX_ATTEMPS = 3;
 
     public static String getBasicStaticUrl() {
         return BASIC_STATIC_URL;
@@ -36,5 +37,9 @@ public final class MovieDbConstants {
 
     public static void setPosterPreferredSize(String posterPreferredSize) {
         POSTER_PREFERRED_SIZE = posterPreferredSize;
+    }
+
+    public static int getMaxAttemps() {
+        return MAX_ATTEMPS;
     }
 }
