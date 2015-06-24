@@ -4,11 +4,11 @@ import android.support.annotation.IntRange;
 import android.support.annotation.NonNull;
 
 import com.fasteque.playground.model.MovieDbService;
+import com.fasteque.playground.model.entities.TvShowsWrapper;
 
 import javax.inject.Inject;
 
-import rx.Subscriber;
-import rx.Subscription;
+import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
@@ -16,7 +16,7 @@ import rx.schedulers.Schedulers;
  * Created by danielealtomare on 31/05/15.
  * Project: Playground
  */
-public class GetAiringTodayUseCase implements UseCase {
+public class GetAiringTodayUseCase implements UseCase<TvShowsWrapper> {
 
     private final MovieDbService movieDbService;
     private int page;
@@ -29,10 +29,9 @@ public class GetAiringTodayUseCase implements UseCase {
     }
 
     @Override
-    public Subscription execute(@NonNull Subscriber subscriber) {
+    public Observable<TvShowsWrapper> execute() {
         return movieDbService.getTvShowsAiringToday(page)
                 .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(subscriber);
+                .observeOn(AndroidSchedulers.mainThread());
     }
 }

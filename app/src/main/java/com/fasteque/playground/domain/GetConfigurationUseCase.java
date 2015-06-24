@@ -3,11 +3,11 @@ package com.fasteque.playground.domain;
 import android.support.annotation.NonNull;
 
 import com.fasteque.playground.model.MovieDbService;
+import com.fasteque.playground.model.entities.Configuration;
 
 import javax.inject.Inject;
 
-import rx.Subscriber;
-import rx.Subscription;
+import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
@@ -15,7 +15,7 @@ import rx.schedulers.Schedulers;
  * Created by danielealtomare on 31/05/15.
  * Project: Playground
  */
-public class GetConfigurationUseCase implements UseCase {
+public class GetConfigurationUseCase implements UseCase<Configuration> {
 
     private final MovieDbService movieDbService;
 
@@ -25,10 +25,9 @@ public class GetConfigurationUseCase implements UseCase {
     }
 
     @Override
-    public Subscription execute(@NonNull Subscriber subscriber) {
+    public Observable<Configuration> execute() {
         return movieDbService.getConfiguration()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(subscriber);
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread());
     }
 }
