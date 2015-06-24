@@ -5,11 +5,15 @@ import android.support.annotation.NonNull;
 
 import com.fasteque.playground.model.MovieDbService;
 import com.fasteque.playground.model.entities.TvShowsWrapper;
+import com.fasteque.playground.utils.MovieDbConstants;
+
+import java.net.SocketTimeoutException;
 
 import javax.inject.Inject;
 
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Func2;
 import rx.schedulers.Schedulers;
 
 /**
@@ -32,6 +36,13 @@ public class GetAiringTodayUseCase implements UseCase<TvShowsWrapper> {
     public Observable<TvShowsWrapper> execute() {
         return movieDbService.getTvShowsAiringToday(page)
                 .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread());
+                .observeOn(AndroidSchedulers.mainThread())
+                .retry(new Func2<Integer, Throwable, Boolean>() {
+                    @Override
+                    public Boolean call(Integer integer, Throwable throwable) {
+                        return throwable instanceof SocketTimeoutException &&
+                                integer < MovieDbConstants.getMaxAttemps();
+                    }
+                });
     }
 }

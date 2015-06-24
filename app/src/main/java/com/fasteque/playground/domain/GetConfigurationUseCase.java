@@ -4,11 +4,15 @@ import android.support.annotation.NonNull;
 
 import com.fasteque.playground.model.MovieDbService;
 import com.fasteque.playground.model.entities.Configuration;
+import com.fasteque.playground.utils.MovieDbConstants;
+
+import java.net.SocketTimeoutException;
 
 import javax.inject.Inject;
 
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Func2;
 import rx.schedulers.Schedulers;
 
 /**
@@ -28,6 +32,13 @@ public class GetConfigurationUseCase implements UseCase<Configuration> {
     public Observable<Configuration> execute() {
         return movieDbService.getConfiguration()
                 .subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread());
+                .observeOn(AndroidSchedulers.mainThread())
+                .retry(new Func2<Integer, Throwable, Boolean>() {
+                    @Override
+                    public Boolean call(Integer integer, Throwable throwable) {
+                        return throwable instanceof SocketTimeoutException &&
+                                integer < MovieDbConstants.getMaxAttemps();
+                    }
+                });
     }
 }
