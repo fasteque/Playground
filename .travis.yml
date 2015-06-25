@@ -4,7 +4,7 @@ jdk: openjdk7
 
 android:
   components:
-    - build-tools-22.0.1
+    - build-tools-23.0.0-preview
     - extra-android-support
     - extra-android-m2repository
     - android-22
