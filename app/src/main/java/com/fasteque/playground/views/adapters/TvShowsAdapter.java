@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.ButterKnife;
-import butterknife.InjectView;
+import butterknife.Bind;
 import rx.Observable;
 import rx.android.view.OnClickEvent;
 import rx.android.view.ViewObservable;
@@ -94,15 +94,15 @@ public class TvShowsAdapter extends RecyclerView.Adapter<TvShowsAdapter.TvShowVi
     }
 
     class TvShowViewHolder extends RecyclerView.ViewHolder {
-        @InjectView(R.id.item_tv_show_cover)
+        @Bind(R.id.item_tv_show_cover)
         ImageView tvShowCover;
 
-        @InjectView(R.id.item_tv_show_title)
+        @Bind(R.id.item_tv_show_title)
         TextView tvShowTitle;
 
         public TvShowViewHolder(View itemView) {
             super(itemView);
-            ButterKnife.inject(this, itemView);
+            ButterKnife.bind(this, itemView);
         }
 
         public void bindTvShow(TvShow tvShow) {

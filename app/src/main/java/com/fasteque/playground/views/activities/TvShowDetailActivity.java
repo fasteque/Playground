@@ -32,9 +32,8 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
-import butterknife.InjectViews;
 
 public class TvShowDetailActivity extends AppCompatActivity implements TvShowDetailView {
 
@@ -43,22 +42,22 @@ public class TvShowDetailActivity extends AppCompatActivity implements TvShowDet
     private static final int TYPE = 2;
     private static final int STATUS = 3;
 
-    @InjectView(R.id.tv_show_detail_toolbar)
+    @Bind(R.id.tv_show_detail_toolbar)
     Toolbar toolbar;
 
-    @InjectView(R.id.tv_show_detail_collapsing_toolbar)
+    @Bind(R.id.tv_show_detail_collapsing_toolbar)
     CollapsingToolbarLayout collapsingToolbar;
 
-    @InjectView(R.id.tv_show_detail_backdrop)
+    @Bind(R.id.tv_show_detail_backdrop)
     ImageView tvShowBackdrop;
 
-    @InjectView(R.id.tv_show_detail_cover)
+    @Bind(R.id.tv_show_detail_cover)
     ImageView tvShowCover;
 
-    @InjectView(R.id.tv_show_detail_detail_homepage_container)
+    @Bind(R.id.tv_show_detail_detail_homepage_container)
     LinearLayout tvShowHomepageContainer;
 
-    @InjectViews({
+    @Bind({
             R.id.tv_show_detail_detail_homepage,
             R.id.tv_show_detail_detail_overview,
             R.id.tv_show_detail_detail_type,
@@ -76,7 +75,7 @@ public class TvShowDetailActivity extends AppCompatActivity implements TvShowDet
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tv_show_detail);
 
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
         setSupportActionBar(toolbar);
 
         tvShow = getIntent().getParcelableExtra(MainActivity.EXTRA_TV_SHOW);

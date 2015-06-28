@@ -25,8 +25,8 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 import rx.android.view.ViewObservable;
 import rx.functions.Action1;
 import rx.functions.Func1;
@@ -36,10 +36,10 @@ public class MainActivity extends AppCompatActivity implements TvShowsView {
 
     public final static String EXTRA_TV_SHOW = "tv_show";
 
-    @InjectView(R.id.shows_toolbar)
+    @Bind(R.id.shows_toolbar)
     Toolbar toolbar;
 
-    @InjectView(R.id.shows_recyclerView)
+    @Bind(R.id.shows_recyclerView)
     RecyclerView showsRecycler;
 
     @Inject
@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements TvShowsView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
 
         initToolbar();
         initRecyclerView();
