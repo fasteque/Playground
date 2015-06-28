@@ -2,7 +2,6 @@ package com.fasteque.playground.presenters;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
-import android.util.Log;
 
 import com.fasteque.playground.domain.GetAiringTodayUseCase;
 import com.fasteque.playground.domain.GetConfigurationUseCase;
@@ -52,7 +51,6 @@ public class TvShowsPresenter implements Presenter {
 
             @Override
             public void onNext(Configuration configuration) {
-                Log.d(getClass().getName(), "onNext");
                 MovieDbConstants.setBasicStaticUrl(configuration.getImages().getBase_url());
                 // TODO: improve the logic to pick the best backdrop and poster sizes
                 // w500
