@@ -16,6 +16,9 @@
 #   public *;
 #}
 
+# Application specific
+-keep class com.fasteque.playground.model.entities.** { *; }
+
 # LeakCanary
 -keep class org.eclipse.mat.** { *; }
 -keep class com.squareup.leakcanary.** { *; }
@@ -49,4 +52,3 @@
 -dontwarn android.support.design.**
 -keep class android.support.design.** { *; }
 -keep interface android.support.design.** { *; }
--keep public class android.support.design.R$* { *; }
