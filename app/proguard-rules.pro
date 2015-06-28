@@ -23,7 +23,7 @@
 # Butter Knife
 -keep class butterknife.** { *; }
 -dontwarn butterknife.internal.**
--keep class **$$ViewInjector { *; }
+-keep class **$$ViewBinder { *; }
 
 -keepclasseswithmembernames class * {
     @butterknife.* <fields>;
@@ -41,3 +41,12 @@
 
 # Picasso
 -dontwarn com.squareup.okhttp.**
+
+# RxAndroid
+-dontwarn rx.internal.util.unsafe.**
+
+# Android Support Design Library
+-dontwarn android.support.design.**
+-keep class android.support.design.** { *; }
+-keep interface android.support.design.** { *; }
+-keep public class android.support.design.R$* { *; }
