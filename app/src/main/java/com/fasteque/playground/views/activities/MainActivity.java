@@ -1,15 +1,19 @@
 package com.fasteque.playground.views.activities;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.transition.Explode;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 
 import com.fasteque.playground.PlaygroundApplication;
 import com.fasteque.playground.R;
@@ -49,6 +53,13 @@ public class MainActivity extends AppCompatActivity implements TvShowsView {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
+            getWindow().setAllowEnterTransitionOverlap(true);
+            getWindow().setEnterTransition(new Explode());
+            getWindow().setExitTransition(new Explode());
+        }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -94,8 +105,14 @@ public class MainActivity extends AppCompatActivity implements TvShowsView {
                     public void call(TvShow tvShow) {
                         Intent tvShowDetailIntent = new Intent(MainActivity.this, TvShowDetailActivity.class);
                         tvShowDetailIntent.putExtra(EXTRA_TV_SHOW, tvShow);
-                        // TODO: animation
-                        startActivity(tvShowDetailIntent);
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                            //noinspection unchecked
+                            startActivity(tvShowDetailIntent, ActivityOptions.makeSceneTransitionAnimation
+                                    (MainActivity.this)
+                                    .toBundle());
+                        } else {
+                            startActivity(tvShowDetailIntent);
+                        }
                     }
                 });
     }
@@ -126,7 +143,13 @@ public class MainActivity extends AppCompatActivity implements TvShowsView {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_attributions) {
-            startActivity(new Intent(this, AttributionsActivity.class));
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                //noinspection unchecked
+                startActivity(new Intent(this, AttributionsActivity.class), ActivityOptions
+                        .makeSceneTransitionAnimation(this).toBundle());
+            } else {
+                startActivity(new Intent(this, AttributionsActivity.class));
+            }
             return true;
         }
 
