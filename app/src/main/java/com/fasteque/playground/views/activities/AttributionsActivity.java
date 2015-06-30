@@ -38,7 +38,11 @@ public class AttributionsActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if(item.getItemId() == android.R.id.home) {
-            finish();
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                finishAfterTransition();
+            } else {
+                finish();
+            }
             return true;
         } else {
             return super.onOptionsItemSelected(item);
