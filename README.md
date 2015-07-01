@@ -1,7 +1,19 @@
 Playground [![Build Status](https://travis-ci.org/fasteque/Playground.svg?branch=master)](https://travis-ci.org/fasteque/Playground)
 ================
 
-Android Playground.
+Android Playground is a sample application where different libraries, patterns and Android APIs are used and tested.
+
+Besides Android SDK APIs and Support libraries, the following libraries and frameworks are used in this project:
+
+- [Clean Architecture](https://github.com/android10/Android-CleanArchitecture)
+- [RxAndroid](https://github.com/ReactiveX/RxAndroid)
+- [Dagger2](https://github.com/google/dagger)
+- [Retrofit](https://github.com/square/retrofit)
+- [Picasso](https://github.com/square/picasso)
+- [LeakCanary](https://github.com/square/leakcanary)
+- [Butter Knife](https://github.com/JakeWharton/butterknife)
+
+This application uses data provided by [The Movie Database](https://www.themoviedb.org/).
 
 For any comment, feedback or if you would like to help, please write to daniele.altomare@gmail.com.
 
