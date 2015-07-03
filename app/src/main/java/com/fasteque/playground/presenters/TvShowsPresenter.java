@@ -98,4 +98,14 @@ public class TvShowsPresenter implements Presenter {
     public void attachIncomingIntent(@NonNull Intent intent) {
         // nothing to do by this presenter.
     }
+
+    private String getBackdropSize(String[] backdropSizes) {
+        // TODO
+        return null;
+    }
+
+    private String getPosterSize(String[] posterSizes) {
+        // TODO
+        return null;
+    }
 }
