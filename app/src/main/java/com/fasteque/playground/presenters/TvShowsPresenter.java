@@ -1,5 +1,6 @@
 package com.fasteque.playground.presenters;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 
@@ -7,6 +8,7 @@ import com.fasteque.playground.domain.GetAiringTodayUseCase;
 import com.fasteque.playground.domain.GetConfigurationUseCase;
 import com.fasteque.playground.model.entities.Configuration;
 import com.fasteque.playground.model.entities.TvShowsWrapper;
+import com.fasteque.playground.utils.ConnectionUtils;
 import com.fasteque.playground.utils.MovieDbConstants;
 import com.fasteque.playground.views.TvShowsView;
 import com.fasteque.playground.views.View;
@@ -52,13 +54,8 @@ public class TvShowsPresenter implements Presenter {
             @Override
             public void onNext(Configuration configuration) {
                 MovieDbConstants.setBasicStaticUrl(configuration.getImages().getBase_url());
-                // TODO: improve the logic to pick the best backdrop and poster sizes
-                // w500
-                MovieDbConstants.setBackdropPreferredSize(configuration.getImages().getBackdrop_sizes()
-                        [configuration.getImages().getBackdrop_sizes().length - 2]);
-                // w500
-                MovieDbConstants.setPosterPreferredSize(configuration.getImages().getPoster_sizes()
-                        [configuration.getImages().getPoster_sizes().length - 3]);
+                MovieDbConstants.setBackdropPreferredSize(getSize(configuration.getImages().getBackdrop_sizes()));
+                MovieDbConstants.setPosterPreferredSize(getSize(configuration.getImages().getPoster_sizes()));
 
                 airingTodaySubscription = getAiringTodayUseCase.execute().subscribe(new Subscriber<TvShowsWrapper>() {
                     @Override
@@ -99,13 +96,18 @@ public class TvShowsPresenter implements Presenter {
         // nothing to do by this presenter.
     }
 
-    private String getBackdropSize(String[] backdropSizes) {
-        // TODO
-        return null;
-    }
+    private String getSize(String[] sizes) {
+        // last size is "original".
+        int size = 0;
 
-    private String getPosterSize(String[] posterSizes) {
-        // TODO
-        return null;
+        if(sizes.length > 4) {
+            if (ConnectionUtils.isConnectedToWiFi((Context) tvShowsView)) {
+                size = sizes.length - 2;
+            } else {
+                size = sizes.length - 3;
+            }
+        }
+
+        return sizes[size];
     }
 }
