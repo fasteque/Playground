@@ -79,10 +79,10 @@ public class TvShowsPresenter implements Presenter {
 
     @Override
     public void onPresenterStop() {
-        if (!configurationSubscription.isUnsubscribed())
+        if (configurationSubscription != null && !configurationSubscription.isUnsubscribed())
             configurationSubscription.unsubscribe();
 
-        if (!airingTodaySubscription.isUnsubscribed())
+        if (airingTodaySubscription != null && !airingTodaySubscription.isUnsubscribed())
             airingTodaySubscription.unsubscribe();
     }
 
