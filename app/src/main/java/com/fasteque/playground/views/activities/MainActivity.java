@@ -85,7 +85,9 @@ public class MainActivity extends AppCompatActivity implements TvShowsView {
 
     private void initToolbar() {
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle(getString(R.string.title_airing_today));
+        if(getSupportActionBar() != null) {
+            getSupportActionBar().setTitle(getString(R.string.title_airing_today));
+        }
     }
 
     private void initRecyclerView() {

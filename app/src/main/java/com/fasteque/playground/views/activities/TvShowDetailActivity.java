@@ -108,7 +108,9 @@ public class TvShowDetailActivity extends AppCompatActivity implements TvShowDet
 
     private void initToolbar() {
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        if(getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
     }
 
     private void initDependencyInjector() {
