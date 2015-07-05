@@ -22,7 +22,6 @@ public class TvShowDetailPresenter extends Subscriber<TvShowDetail> implements P
     private TvShowDetailView tvShowDetailView;
     private final GetTvShowDetailUseCase getTvShowDetailUseCase;
     private Intent tvShowIntent;
-    private Number tvShowId;
 
     private Subscription tvShowDetailSubscription;
 
