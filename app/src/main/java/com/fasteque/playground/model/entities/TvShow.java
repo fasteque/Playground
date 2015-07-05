@@ -137,7 +137,7 @@ public class TvShow implements Parcelable {
         first_air_date = in.readString();
         id = in.readLong();
         name = in.readString();
-        origin_country = new ArrayList<String>();
+        origin_country = new ArrayList<>();
         in.readStringList(origin_country);
         original_name = in.readString();
         popularity = in.readLong();
