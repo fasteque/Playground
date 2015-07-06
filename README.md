@@ -1,6 +1,8 @@
 Playground [![Build Status](https://travis-ci.org/fasteque/Playground.svg?branch=master)](https://travis-ci.org/fasteque/Playground)
 ================
 
+Note: this application is to be considered always as a "work in progress" and it is not production ready.
+
 Android Playground is a sample application where different libraries, patterns and Android APIs are used and tested.
 
 Besides Android SDK APIs and Support libraries, the following libraries and frameworks are used in this project:
