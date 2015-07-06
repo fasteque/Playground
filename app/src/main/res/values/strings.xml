@@ -20,4 +20,7 @@
     <string name="error_tv_show_detail">Failed to get TV show info</string>
 
     <string name="tv_show_overview">Overview</string>
+
+    <!-- Transition -->
+    <string name="transition_tv_show_poster">transition:POSTER</string>
 </resources>
