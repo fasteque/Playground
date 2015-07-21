@@ -31,7 +31,7 @@ public class GetConfigurationUseCase implements UseCase<Configuration> {
     @Override
     public Observable<Configuration> execute() {
         return movieDbService.getConfiguration()
-                .subscribeOn(Schedulers.newThread())
+                .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .retry(new Func2<Integer, Throwable, Boolean>() {
                     @Override
