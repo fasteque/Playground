@@ -19,6 +19,9 @@ This application uses data provided by [The Movie Database](https://www.themovie
 
 For any comment, feedback or if you would like to help, please write to daniele.altomare@gmail.com.
 
+#### Screenshots
+
+![](https://raw.githubusercontent.com/fasteque/Playground/master/art/screenshots.png)
 
 
 License
