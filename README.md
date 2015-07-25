@@ -19,6 +19,11 @@ This application uses data provided by [The Movie Database](https://www.themovie
 
 For any comment, feedback or if you would like to help, please write to daniele.altomare@gmail.com.
 
+<br>
+##### Latest available APK:
+[Release v0.3](https://github.com/fasteque/Playground/releases/download/0.3/app-debugLeakCanaryNoOp-v0.3.apk)
+<br><br>
+
 #### Screenshots
 
 ![](https://raw.githubusercontent.com/fasteque/Playground/master/art/screenshots.png)
