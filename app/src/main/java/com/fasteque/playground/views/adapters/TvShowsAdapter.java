@@ -75,7 +75,6 @@ public class TvShowsAdapter extends RecyclerView.Adapter<TvShowsAdapter.TvShowVi
         notifyDataSetChanged();
     }
 
-
     public void insertTvShows(List<TvShow> tvShows) {
         this.tvShows.clear();
         appendTvShows(tvShows);
