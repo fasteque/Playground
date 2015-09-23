@@ -20,7 +20,7 @@ public class TvShowAiringTodayModule {
 
     private final int page;
 
-    public TvShowAiringTodayModule(int page) {
+    public TvShowAiringTodayModule(@SuppressWarnings("SameParameterValue") int page) {
         this.page = page;
     }
 
