@@ -21,6 +21,8 @@ public class CustomTabActivityHelper {
     private CustomTabsServiceConnection connection;
     private ConnectionCallback connectionCallback;
 
+    // FIXME: empty constructor for dependency injection
+
     /**
      * Opens the URL on a Custom Tab if possible. Otherwise fallbacks to opening it on a WebView.
      *
