@@ -11,10 +11,7 @@ import android.view.Window;
 
 import com.fasteque.playground.R;
 import com.fasteque.playground.helpers.CustomTabActivityHelper;
-import com.fasteque.playground.helpers.WebviewFallback;
 import com.fasteque.playground.views.fragments.AttributionsFragment;
-
-import javax.inject.Inject;
 
 /**
  * Created by danielealtomare on 27/05/15.
@@ -105,6 +102,6 @@ public class AttributionsActivity extends AppCompatActivity implements Attributi
         }
         intentBuilder.setShowTitle(true);
 
-        CustomTabActivityHelper.openCustomTab(this, intentBuilder.build(), uri, new WebviewFallback());
+        CustomTabActivityHelper.openCustomTab(this, intentBuilder.build(), uri, new WebViewFallback());
     }
 }
