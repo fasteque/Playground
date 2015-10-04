@@ -11,6 +11,7 @@ import android.view.Window;
 
 import com.fasteque.playground.R;
 import com.fasteque.playground.helpers.CustomTabActivityHelper;
+import com.fasteque.playground.helpers.WebViewFallback;
 import com.fasteque.playground.views.fragments.AttributionsFragment;
 
 /**
