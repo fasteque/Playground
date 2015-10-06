@@ -75,10 +75,10 @@ public class AttributionsActivity extends AppCompatActivity implements Attributi
     private void setupCustomTabHelper() {
         // FIXME: do it with dependency injection
         customTabActivityHelper = new CustomTabActivityHelper();
-        customTabActivityHelper.setConnectionCallback(mConnectionCallback);
+        customTabActivityHelper.setConnectionCallback(connectionCallback);
     }
 
-    private CustomTabActivityHelper.ConnectionCallback mConnectionCallback = new CustomTabActivityHelper
+    private CustomTabActivityHelper.ConnectionCallback connectionCallback = new CustomTabActivityHelper
             .ConnectionCallback() {
         @Override
         public void onCustomTabsConnected() {
