@@ -59,9 +59,8 @@ public class MainActivity extends AppCompatActivity implements TvShowsView {
             getWindow().setEnterTransition(new Explode());
             getWindow().setExitTransition(new Explode());
         }
-
-        super.onCreate(savedInstanceState);
         setTheme(R.style.AppTheme);
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         ButterKnife.bind(this);
