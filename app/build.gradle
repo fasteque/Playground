@@ -2,13 +2,15 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.neenbedankt.android-apt'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.2"
+    def globalConfiguration = rootProject.extensions.getByName("ext")
+
+    compileSdkVersion globalConfiguration.getAt("androidCompileSdkVersion")
+    buildToolsVersion globalConfiguration.getAt("androidBuildToolsVersion")
 
     defaultConfig {
         applicationId "com.fasteque.playground"
-        minSdkVersion 16
-        targetSdkVersion 23
+        minSdkVersion globalConfiguration.getAt("androidMinSdkVersion")
+        targetSdkVersion globalConfiguration.getAt("androidTargetSdkVersion")
         versionCode 4
         versionName "0.4"
     }
@@ -40,24 +42,29 @@ android {
 }
 
 dependencies {
-    apt 'com.google.dagger:dagger-compiler:2.0'
+    def globalConfiguration = rootProject.extensions.getByName("ext")
+    def appDependencies = globalConfiguration.appDependencies
+    def appDebugMinifiedDependencies = globalConfiguration.appDebugMinifiedDependencies
+    def appReleaseDependencies = globalConfiguration.appReleaseDependencies
+
+    apt appDependencies.daggerCompiler
 
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:23.1.1'
-    compile 'com.android.support:recyclerview-v7:23.1.1'
-    compile 'com.android.support:cardview-v7:23.1.1'
-    compile 'com.android.support:design:23.1.1'
-    compile 'com.android.support:customtabs:23.1.1'
-    compile 'com.squareup.retrofit:retrofit:1.9.0'
-    compile 'com.squareup.picasso:picasso:2.5.2'
-    compile 'io.reactivex:rxandroid:0.25.0'
-    compile 'com.jakewharton:butterknife:7.0.1'
-    compile 'com.google.dagger:dagger:2.0'
-    compile 'org.glassfish:javax.annotation:10.0-b28'
+    compile appDependencies.appCompat
+    compile appDependencies.recyclerView
+    compile appDependencies.cardView
+    compile appDependencies.design
+    compile appDependencies.customTabs
+    compile appDependencies.retrofit
+    compile appDependencies.picasso
+    compile appDependencies.rxAndroid
+    compile appDependencies.butterKnife
+    compile appDependencies.dagger
+    compile appDependencies.javaxAnnotation
 
-    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.3.1'
-    debugLeakCanaryNoOpCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.3.1'
-    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.3.1'
+    debugCompile appDependencies.leakCanary
+    debugLeakCanaryNoOpCompile appDebugMinifiedDependencies.leakCanaryNoOp
+    releaseCompile appReleaseDependencies.leakCanaryNoOp
 }
 
 repositories {
