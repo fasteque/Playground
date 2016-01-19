@@ -32,7 +32,7 @@ public class RestMovieDbService implements MovieDbService {
         movieDbApi = restAdapter.create(MovieDbApi.class);
     }
 
-    RequestInterceptor authorizationInterceptor = new RequestInterceptor() {
+    final RequestInterceptor authorizationInterceptor = new RequestInterceptor() {
         @Override
         public void intercept(RequestInterceptor.RequestFacade request) {
             // FIXME: remove API Key value from code.

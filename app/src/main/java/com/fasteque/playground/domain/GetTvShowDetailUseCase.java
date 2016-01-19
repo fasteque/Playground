@@ -22,7 +22,7 @@ import rx.schedulers.Schedulers;
 public class GetTvShowDetailUseCase implements UseCase<TvShowDetail> {
 
     private final MovieDbService movieDbService;
-    private Number tvShowId;
+    private final Number tvShowId;
 
     @Inject
     public GetTvShowDetailUseCase(@NonNull MovieDbService movieDbService, Number tvShowId) {

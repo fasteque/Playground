@@ -23,7 +23,7 @@ import rx.schedulers.Schedulers;
 public class GetAiringTodayUseCase implements UseCase<TvShowsWrapper> {
 
     private final MovieDbService movieDbService;
-    private int page;
+    private final int page;
 
     @Inject
     public GetAiringTodayUseCase(@NonNull MovieDbService movieDbService,

@@ -31,9 +31,9 @@ import rx.subjects.PublishSubject;
  */
 public class TvShowsAdapter extends RecyclerView.Adapter<TvShowsAdapter.TvShowViewHolder> {
 
-    private PublishSubject<View> tvShowView = PublishSubject.create();
-    private List<TvShow> tvShows = new ArrayList<>();
-    private Context context;
+    private final PublishSubject<View> tvShowView = PublishSubject.create();
+    private final List<TvShow> tvShows = new ArrayList<>();
+    private final Context context;
 
     public TvShowsAdapter(@NonNull Context context) {
         this.context = context;
