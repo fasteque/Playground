@@ -21,6 +21,7 @@ public class TvShowDetailPresenter extends Subscriber<TvShowDetail> implements P
 
     private TvShowDetailView tvShowDetailView;
     private final GetTvShowDetailUseCase getTvShowDetailUseCase;
+    @SuppressWarnings("FieldCanBeLocal")
     private Intent tvShowIntent;
 
     private Subscription tvShowDetailSubscription;
