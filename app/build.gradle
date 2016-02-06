@@ -58,6 +58,7 @@ dependencies {
     compile appDependencies.retrofit
     compile appDependencies.picasso
     compile appDependencies.rxAndroid
+    compile appDependencies.rxBinding
     compile appDependencies.butterKnife
     compile appDependencies.dagger
     compile appDependencies.javaxAnnotation
