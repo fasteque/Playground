@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.fasteque.playground.R;
 import com.fasteque.playground.model.entities.TvShow;
 import com.fasteque.playground.utils.MovieDbConstants;
+import com.jakewharton.rxbinding.view.RxView;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -20,8 +21,6 @@ import java.util.List;
 import butterknife.ButterKnife;
 import butterknife.Bind;
 import rx.Observable;
-import rx.android.view.OnClickEvent;
-import rx.android.view.ViewObservable;
 import rx.functions.Func1;
 import rx.subjects.PublishSubject;
 
@@ -41,18 +40,17 @@ public class TvShowsAdapter extends RecyclerView.Adapter<TvShowsAdapter.TvShowVi
 
     @Override
     public TvShowViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.
+        final View view = LayoutInflater.
                 from(parent.getContext()).
                 inflate(R.layout.item_tv_show, parent, false);
 
         TvShowViewHolder tvShowViewHolder = new TvShowViewHolder(view);
 
-        // Unsubscribe is automatically performed by bindView method.
-        ViewObservable.bindView(parent, ViewObservable.clicks(view))
-                .map(new Func1<OnClickEvent, View>() {
+        RxView.clicks(view).takeUntil(RxView.detaches(parent))
+                .map(new Func1<Void, View>() {
                     @Override
-                    public View call(OnClickEvent onClickEvent) {
-                        return onClickEvent.view();
+                    public View call(Void aVoid) {
+                        return view;
                     }
                 })
                 .subscribe(tvShowView);
