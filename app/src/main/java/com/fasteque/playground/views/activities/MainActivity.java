@@ -31,7 +31,6 @@ import javax.inject.Inject;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import rx.android.view.ViewObservable;
 import rx.functions.Action1;
 import rx.functions.Func1;
 
@@ -94,8 +93,7 @@ public class MainActivity extends AppCompatActivity implements TvShowsView {
         tvShowsAdapter = new TvShowsAdapter(this);
         showsRecycler.setAdapter(tvShowsAdapter);
 
-        // Unsubscribe is automatically performed by bindView method.
-        ViewObservable.bindView(showsRecycler, tvShowsAdapter.onClickTvShow())
+        tvShowsAdapter.onClickTvShow()
                 .map(new Func1<View, TvShow>() {
                     @Override
                     public TvShow call(View view) {
