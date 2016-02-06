@@ -31,6 +31,7 @@ import javax.inject.Inject;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import rx.Subscription;
 import rx.functions.Action1;
 import rx.functions.Func1;
 
@@ -49,6 +50,7 @@ public class MainActivity extends AppCompatActivity implements TvShowsView {
     TvShowsPresenter tvShowsPresenter;
 
     private TvShowsAdapter tvShowsAdapter;
+    private Subscription tvShowsSubscription;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +70,14 @@ public class MainActivity extends AppCompatActivity implements TvShowsView {
         initRecyclerView();
         initDependencyInjector();
         initPresenter();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (tvShowsSubscription != null) {
+            tvShowsSubscription.unsubscribe();
+        }
     }
 
     @Override
@@ -93,7 +103,7 @@ public class MainActivity extends AppCompatActivity implements TvShowsView {
         tvShowsAdapter = new TvShowsAdapter(this);
         showsRecycler.setAdapter(tvShowsAdapter);
 
-        tvShowsAdapter.onClickTvShow()
+        tvShowsSubscription = tvShowsAdapter.onClickTvShow()
                 .map(new Func1<View, TvShow>() {
                     @Override
                     public TvShow call(View view) {
