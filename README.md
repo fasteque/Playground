@@ -9,11 +9,12 @@ Besides Android SDK APIs and Support libraries, the following libraries and fram
 
 - [Clean Architecture](https://github.com/android10/Android-CleanArchitecture)
 - [RxAndroid](https://github.com/ReactiveX/RxAndroid)
+- [RxBinding](https://github.com/JakeWharton/RxBinding)
 - [Dagger2](https://github.com/google/dagger)
 - [Retrofit](https://github.com/square/retrofit)
 - [Picasso](https://github.com/square/picasso)
 - [LeakCanary](https://github.com/square/leakcanary)
-- [Butter Knife](https://github.com/JakeWharton/butterknife)
+- [ButterKnife](https://github.com/JakeWharton/butterknife)
 
 This application uses data provided by [The Movie Database](https://www.themoviedb.org/).
 
