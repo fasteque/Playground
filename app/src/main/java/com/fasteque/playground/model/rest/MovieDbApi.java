@@ -16,6 +16,8 @@ import rx.Observable;
 public interface MovieDbApi {
     String END_POINT = "https://api.themoviedb.org/3/";
     String PARAM_API_KEY = "api_key";
+    // FIXME: do not leave it here, provide it externally.
+    String API_KEY = "a46a3d7b1f4afc0fbbb66ee9d7775d1b";
 
     @GET("configuration")
     Observable<Configuration>

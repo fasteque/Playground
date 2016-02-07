@@ -35,7 +35,7 @@ public class RestMovieDbService implements MovieDbService {
             public Response intercept(Chain chain) throws IOException {
                 Request request = chain.request();
                 HttpUrl url = request.url().newBuilder().addQueryParameter(MovieDbApi.PARAM_API_KEY,
-                        "a46a3d7b1f4afc0fbbb66ee9d7775d1b").build();
+                        MovieDbApi.API_KEY).build();
                 request = request.newBuilder().url(url).build();
                 return chain.proceed(request);
             }
