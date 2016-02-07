@@ -4,9 +4,9 @@ import com.fasteque.playground.model.entities.Configuration;
 import com.fasteque.playground.model.entities.TvShowDetail;
 import com.fasteque.playground.model.entities.TvShowsWrapper;
 
-import retrofit.http.GET;
-import retrofit.http.Path;
-import retrofit.http.Query;
+import retrofit2.http.GET;
+import retrofit2.http.Path;
+import retrofit2.http.Query;
 import rx.Observable;
 
 /**
@@ -14,18 +14,18 @@ import rx.Observable;
  * Project: Playground
  */
 public interface MovieDbApi {
-    String END_POINT = "https://api.themoviedb.org/3";
+    String END_POINT = "https://api.themoviedb.org/3/";
     String PARAM_API_KEY = "api_key";
 
-    @GET("/configuration")
+    @GET("configuration")
     Observable<Configuration>
     getConfiguration();
 
-    @GET("/tv/airing_today")
+    @GET("tv/airing_today")
     Observable<TvShowsWrapper>
     getTvShowsAiringToday(@Query("page") int page);
 
-    @GET("/tv/{id}")
+    @GET("tv/{id}")
     Observable<TvShowDetail>
     getTvShowDetail(@Path("id") Number id);
 }
