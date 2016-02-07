@@ -23,7 +23,7 @@
 -keep class org.eclipse.mat.** { *; }
 -keep class com.squareup.leakcanary.** { *; }
 
-# Butter Knife
+# ButterKnife
 -keep class butterknife.** { *; }
 -dontwarn butterknife.internal.**
 -keep class **$$ViewBinder { *; }
@@ -37,8 +37,8 @@
 }
 
 # Retrofit
--dontwarn retrofit.**
--keep class retrofit.** { *; }
+-dontwarn retrofit2.**
+-keep class retrofit2.** { *; }
 -keepattributes Signature
 -keepattributes Exceptions
 
