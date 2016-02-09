@@ -8,7 +8,7 @@ def getProps(String propName) {
         props.load(new FileInputStream(propsFile))
         return props[propName]
     } else {
-        return "";
+        return "\"missing_local_properties\"";
     }
 }
 
