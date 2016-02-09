@@ -21,6 +21,10 @@ This application uses data provided by [The Movie Database](https://www.themovie
 For any comment, feedback or if you would like to help, please write to daniele.altomare@gmail.com.
 
 <br>
+##### Build:
+A property named `movieDbApiKey` must be defined in the `local.properties` file with a valid [The Movie Database](https://www.themoviedb.org/) API key.
+
+<br>
 ##### Latest available APK:
 [Release v0.3](https://github.com/fasteque/Playground/releases/download/0.3/app-debugLeakCanaryNoOp-v0.3.apk)
 <br><br>
