@@ -2,6 +2,7 @@ package com.fasteque.playground.model.rest;
 
 import android.support.annotation.IntRange;
 
+import com.fasteque.playground.BuildConfig;
 import com.fasteque.playground.model.MovieDbService;
 import com.fasteque.playground.model.entities.Configuration;
 import com.fasteque.playground.model.entities.TvShowDetail;
@@ -35,7 +36,7 @@ public class RestMovieDbService implements MovieDbService {
             public Response intercept(Chain chain) throws IOException {
                 Request request = chain.request();
                 HttpUrl url = request.url().newBuilder().addQueryParameter(MovieDbApi.PARAM_API_KEY,
-                        MovieDbApi.API_KEY).build();
+                        BuildConfig.MOVIE_DB_API_KEY).build();
                 request = request.newBuilder().url(url).build();
                 return chain.proceed(request);
             }
