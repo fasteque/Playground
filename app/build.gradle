@@ -73,6 +73,7 @@ dependencies {
     compile appDependencies.retrofit
     compile appDependencies.retrofitAdapterRxJava
     compile appDependencies.retrofitConverterGson
+    compile appDependencies.okHttp3LogInterceptor
     compile appDependencies.picasso
     compile appDependencies.rxAndroid
     compile appDependencies.rxBinding
