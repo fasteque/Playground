@@ -16,6 +16,7 @@ ext {
     rxBindingVersion = '0.3.0'
     butterKnifeVersion = '7.0.1'
     retrofitVersion = '2.0.0-beta4'
+    okHttp3LogInterceptorVersion = '3.1.2'
     picassoVersion = '2.5.2'
     daggerCompilerVersion = '2.0'
     daggerVersion = '2.0'
@@ -34,6 +35,7 @@ ext {
             retrofit:               "com.squareup.retrofit2:retrofit:${retrofitVersion}",
             retrofitAdapterRxJava:  "com.squareup.retrofit2:adapter-rxjava:${retrofitVersion}",
             retrofitConverterGson:  "com.squareup.retrofit2:converter-gson:${retrofitVersion}",
+            okHttp3LogInterceptor:  "com.squareup.okhttp3:logging-interceptor:${okHttp3LogInterceptorVersion}",
             picasso:                "com.squareup.picasso:picasso:${picassoVersion}",
             daggerCompiler:         "com.google.dagger:dagger-compiler:${daggerCompilerVersion}",
             dagger:                 "com.google.dagger:dagger:${daggerVersion}",
