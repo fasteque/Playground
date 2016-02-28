@@ -12,8 +12,8 @@ ext {
     androidCompileSdkVersion = 23
 
     androidSupportLibraryVersion = '23.2.0'
-    rxAndroidVersion = '1.0.1'
-    rxBindingVersion = '0.3.0'
+    rxAndroidVersion = '1.1.0'
+    rxBindingVersion = '0.4.0'
     butterKnifeVersion = '7.0.1'
     retrofitVersion = '2.0.0-beta4'
     okHttp3LogInterceptorVersion = '3.1.2'
@@ -21,7 +21,6 @@ ext {
     daggerCompilerVersion = '2.0'
     daggerVersion = '2.0'
     javaxAnnotationVersion = '10.0-b28'
-    leakCanaryVersion = '1.3.1'
 
     appDependencies = [
             appCompat:              "com.android.support:appcompat-v7:${androidSupportLibraryVersion}",
@@ -40,14 +39,5 @@ ext {
             daggerCompiler:         "com.google.dagger:dagger-compiler:${daggerCompilerVersion}",
             dagger:                 "com.google.dagger:dagger:${daggerVersion}",
             javaxAnnotation:        "org.glassfish:javax.annotation:${javaxAnnotationVersion}",
-            leakCanary:             "com.squareup.leakcanary:leakcanary-android:${leakCanaryVersion}"
-    ]
-
-    appDebugMinifiedDependencies = [
-            leakCanaryNoOp:     "com.squareup.leakcanary:leakcanary-android-no-op:${leakCanaryVersion}"
-    ]
-
-    appReleaseDependencies = [
-            leakCanaryNoOp:     "com.squareup.leakcanary:leakcanary-android-no-op:${leakCanaryVersion}"
     ]
 }
