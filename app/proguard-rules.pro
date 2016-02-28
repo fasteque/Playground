@@ -19,10 +19,6 @@
 # Application specific
 -keep class com.fasteque.playground.model.entities.** { *; }
 
-# LeakCanary
--keep class org.eclipse.mat.** { *; }
--keep class com.squareup.leakcanary.** { *; }
-
 # ButterKnife
 -keep class butterknife.** { *; }
 -dontwarn butterknife.internal.**
@@ -41,12 +37,22 @@
 -keep class retrofit2.** { *; }
 -keepattributes Signature
 -keepattributes Exceptions
+-dontwarn java.nio.file.**
+-dontwarn org.codehaus.mojo.animal_sniffer.**
 
 # Picasso
 -dontwarn com.squareup.okhttp.**
 
 # RxAndroid
 -dontwarn rx.internal.util.unsafe.**
+-keepclassmembers class rx.internal.util.unsafe.*ArrayQueue*Field* {
+   long producerIndex;
+   long consumerIndex;
+}
+-keepclassmembers class rx.internal.util.unsafe.BaseLinkedQueueProducerNodeRef {
+   long producerNode;
+   long consumerNode;
+}
 
 # Android Support Design Library
 -dontwarn android.support.design.**
