@@ -15,7 +15,7 @@ ext {
     rxAndroidVersion = '1.1.0'
     rxBindingVersion = '0.4.0'
     butterKnifeVersion = '7.0.1'
-    retrofitVersion = '2.0.0'
+    retrofitVersion = '2.0.2'
     okHttp3LogInterceptorVersion = '3.3.0'
     picassoVersion = '2.5.2'
     daggerCompilerVersion = '2.0'
