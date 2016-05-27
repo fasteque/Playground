@@ -29,7 +29,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import rx.Subscription;
 import rx.functions.Action1;
@@ -40,10 +40,10 @@ public class MainActivity extends AppCompatActivity implements TvShowsView {
 
     public final static String EXTRA_TV_SHOW = "tv_show";
 
-    @Bind(R.id.shows_toolbar)
+    @BindView(R.id.shows_toolbar)
     Toolbar toolbar;
 
-    @Bind(R.id.shows_recyclerView)
+    @BindView(R.id.shows_recyclerView)
     RecyclerView showsRecycler;
 
     @Inject

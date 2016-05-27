@@ -70,6 +70,7 @@ dependencies {
     compile appDependencies.rxAndroid
     compile appDependencies.rxBinding
     compile appDependencies.butterKnife
+    apt appDependencies.butterKnifeCompiler
     compile appDependencies.dagger
     compile appDependencies.javaxAnnotation
 }

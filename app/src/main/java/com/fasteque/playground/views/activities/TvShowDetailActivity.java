@@ -3,11 +3,11 @@ package com.fasteque.playground.views.activities;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.transition.Explode;
 import android.view.MenuItem;
@@ -33,7 +33,8 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import butterknife.Bind;
+import butterknife.BindView;
+import butterknife.BindViews;
 import butterknife.ButterKnife;
 
 public class TvShowDetailActivity extends AppCompatActivity implements TvShowDetailView {
@@ -43,22 +44,22 @@ public class TvShowDetailActivity extends AppCompatActivity implements TvShowDet
     private static final int TYPE = 2;
     private static final int STATUS = 3;
 
-    @Bind(R.id.tv_show_detail_toolbar)
+    @BindView(R.id.tv_show_detail_toolbar)
     Toolbar toolbar;
 
-    @Bind(R.id.tv_show_detail_collapsing_toolbar)
+    @BindView(R.id.tv_show_detail_collapsing_toolbar)
     CollapsingToolbarLayout collapsingToolbar;
 
-    @Bind(R.id.tv_show_detail_backdrop)
+    @BindView(R.id.tv_show_detail_backdrop)
     ImageView tvShowBackdrop;
 
-    @Bind(R.id.tv_show_detail_cover)
+    @BindView(R.id.tv_show_detail_cover)
     ImageView tvShowCover;
 
-    @Bind(R.id.tv_show_detail_detail_homepage_container)
+    @BindView(R.id.tv_show_detail_detail_homepage_container)
     LinearLayout tvShowHomepageContainer;
 
-    @Bind({
+    @BindViews({
             R.id.tv_show_detail_detail_homepage,
             R.id.tv_show_detail_detail_overview,
             R.id.tv_show_detail_detail_type,

@@ -18,8 +18,8 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.Bind;
 import rx.Observable;
 import rx.functions.Func1;
 import rx.subjects.PublishSubject;
@@ -91,10 +91,10 @@ public class TvShowsAdapter extends RecyclerView.Adapter<TvShowsAdapter.TvShowVi
     }
 
     class TvShowViewHolder extends RecyclerView.ViewHolder {
-        @Bind(R.id.item_tv_show_cover)
+        @BindView(R.id.item_tv_show_cover)
         ImageView tvShowCover;
 
-        @Bind(R.id.item_tv_show_title)
+        @BindView(R.id.item_tv_show_title)
         TextView tvShowTitle;
 
         public TvShowViewHolder(View itemView) {
