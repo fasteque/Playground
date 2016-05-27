@@ -4,7 +4,6 @@
     xmlns:cardview="http://schemas.android.com/apk/res-auto"
     android:layout_width="@dimen/item_tv_show_width"
     android:layout_height="@dimen/item_tv_show_height"
-    android:layout_margin="5dp"
     cardview:cardUseCompatPadding="true"
     cardview:cardElevation="4dp"
     cardview:cardCornerRadius="3dp"
