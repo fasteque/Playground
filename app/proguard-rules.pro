@@ -19,19 +19,6 @@
 # Application specific
 -keep class com.fasteque.playground.model.entities.** { *; }
 
-# ButterKnife
-#-keep class butterknife.** { *; }
-#-dontwarn butterknife.internal.**
-#-keep class **$$ViewBinder { *; }
-#
-#-keepclasseswithmembernames class * {
-#    @butterknife.* <fields>;
-#}
-#
-#-keepclasseswithmembernames class * {
-#    @butterknife.* <methods>;
-#}
-
 # Retrofit
 -dontwarn retrofit2.**
 -keep class retrofit2.** { *; }
